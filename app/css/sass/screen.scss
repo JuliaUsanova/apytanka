@@ -155,71 +155,74 @@ b.dot {
 
   background: url("../images/questions-wallpaper-2560x1600.jpg") no-repeat;
 
-  > .container {
-    padding: 0;
+  .container {
+    padding: 2px;
     border-radius: 6px;
     background-color: rgba($mixed-white, 0.5);
-    box-shadow: 0px 0px 3px 1px rgb(199, 196, 196);
-  }
-  section:not(:first-of-type) {
-    padding: 60px 70px;
-  }
-  section:first-of-type {
+    box-shadow: inset 0px 0px 3px 1px #A7A3A3;
+    overflow: hidden;
+     .homepage{
+       section:not(:first-of-type) {
+         padding: 60px 70px;
+       }
+       section:first-of-type {
 
-    min-height: 550px;
+         min-height: 550px;
 
-    .gallery-blockquote {
-      margin: 8% 5% 0;
-      font-size: 40px;
-      border: 0;
+         .gallery-blockquote {
+           margin: 8% 5% 0;
+           font-size: 40px;
+           border: 0;
 
-      span {
-        color: #DFE3E4;
-        background-color: rgba(1, 1, 1, 0.7);
-        &:nth-of-type(even) {
-          color: #8A9BA3;
-        }
-        padding: 0px 30px;
-      }
-    }
+           span {
+             color: #DFE3E4;
+             background-color: rgba(1, 1, 1, 0.7);
+             &:nth-of-type(even) {
+               color: #8A9BA3;
+             }
+             padding: 0px 30px;
+           }
+         }
+
+       }
+       section:nth-of-type(2) {
+         background-color: #FFFFFF;
+         .btn {
+           border-color: $orange;
+           &:hover {
+             @include button-gradient(transparent, transparent);
+           }
+         }
+       }
+       section:nth-of-type(3) {
+         background-color: #F3F3F3;
+         h2 {
+           color: #46C595;
+         }
+         .btn {
+           border-color: #46C595;
+           &:hover {
+             @include button-gradient(transparent, transparent);
+           }
+         }
+       }
+
+       section:last-of-type {
+         background-color: #E1E3E5;
+         h2 {
+           color: #2E416C;
+         }
+         .btn {
+           border-color: #2E416C;
+           &:hover {
+             @include button-gradient(transparent, transparent);
+           }
+         }
+       }
+     }
 
   }
-  section:nth-of-type(2) {
-    background-color: #FFFFFF;
-    .btn {
-      border-color: $orange;
-      &:hover {
-        @include button-gradient(transparent, transparent);
-      }
-    }
-  }
-  section:nth-of-type(3) {
-    background-color: #F3F3F3;
-    h2 {
-      color: #46C595;
-    }
-    .btn {
-      border-color: #46C595;
-      &:hover {
-        @include button-gradient(transparent, transparent);
-      }
-    }
-  }
 
-  section:nth-of-type(4) {
-    background-color: #E1E3E5;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    h2 {
-      color: #2E416C;
-    }
-    .btn {
-      border-color: #2E416C;
-      &:hover {
-        @include button-gradient(transparent, transparent);
-      }
-    }
-  }
 
 }
 
