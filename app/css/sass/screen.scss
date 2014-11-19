@@ -4,6 +4,7 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 @import "compass/css3";
 @import "graphics";
+@import "profile-page";
 
 $orange: #FA6F4F;
 $dark-orange: darken(#FA6F4F, 15%);
@@ -14,7 +15,7 @@ $white: #fff;
 $mixed-white: mix($light-background, $white, 9);
 
 $grey: rgb(84, 81, 81);
-;
+
 
 @mixin button-gradient($color1, $color2) {
   background-color: $color1;
@@ -156,18 +157,19 @@ b.dot {
   background: url("../images/questions-wallpaper-2560x1600.jpg") no-repeat;
 
   .container {
-    padding: 2px;
+    padding: 0px;
     border-radius: 6px;
     background-color: rgba($mixed-white, 0.5);
-    box-shadow: inset 0px 0px 3px 1px #A7A3A3;
+    box-shadow: 0px 2px 1px 1px rgba(1,1,1,0.25);
     overflow: hidden;
+
      .homepage{
        section:not(:first-of-type) {
          padding: 60px 70px;
        }
        section:first-of-type {
 
-         min-height: 550px;
+         min-height: 455px;
 
          .gallery-blockquote {
            margin: 8% 5% 0;
