@@ -1,0 +1,238 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@import "compass/css3";
+@import "graphics";
+
+$orange: #FA6F4F;
+$dark-orange: darken(#FA6F4F, 15%);
+$light-orange: lighten(#FA6F4F, 10%);
+
+$light-background: rgba(250, 162, 125, 0.05);
+$white: #fff;
+$mixed-white: mix($light-background, $white, 9);
+
+$grey: rgb(84, 81, 81);
+;
+
+@mixin button-gradient($color1, $color2) {
+  background-color: $color1;
+  background-image: -webkit-linear-gradient(top, $color1 0, $color2 100%);
+  background-image: -o-linear-gradient(top, $color1 0, $color2 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($color1), to($color2));
+  background-image: linear-gradient(to bottom, $color1 0, $color2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=''+($color1), endColorstr=''+($color2), GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  background-repeat: repeat-x;
+}
+
+@mixin big-btn() {
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 14px 20px;
+}
+
+body {
+  background: $light-background;
+  font-family: serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+p {
+  min-height: 20px;
+}
+
+header {
+  margin: 3% 0 1%;
+  font-size: 15px;
+
+  #logo .logo {
+    font-size: 30px;
+    font-family: fantasy;
+    color: $orange;
+  }
+
+  .sublogo {
+    padding: 0;
+    small {
+      color: $orange;
+      opacity: 0.9;
+      font-size: 20px;
+      font-family: monospace;
+      vertical-align: -20px;
+    }
+  }
+
+  .top-nav {
+    line-height: 45px;
+    margin-bottom: 20px;
+
+    [data-toggle="dropdown"] {
+
+      @include button-gradient($light-orange, $orange);
+      @include big-btn();
+
+      border-color: $dark-orange;
+
+      color: rgb(254, 252, 249);
+
+    }
+
+    .dropdown-menu {
+      min-width: 100%;
+      a {
+        color: $grey;
+      }
+      .glyphicon {
+        margin-left: -5px;
+        margin-right: 5px;
+      }
+    }
+
+  }
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $orange;
+  footer & {
+    color: white;
+  }
+}
+
+b.dot {
+  color: inherit;
+  vertical-align: 3px;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.btn, .btn:hover, .btn:focus, .btn:active {
+  outline-color: transparent;
+}
+
+.login {
+  text-shadow: -0.5px -1px rgb(38, 35, 35);
+  color: rgb(183, 176, 176);
+  &:hover {
+    text-shadow: -0.5px -1px $dark-orange;
+    color: $orange;
+    text-decoration: none;
+  }
+
+}
+
+.winner-block {
+
+  .btn {
+    @include button-gradient($mixed-white, lighten($light-background, 80%));
+    @include big-btn();
+
+    color: $grey;
+
+    .glyphicon-star {
+      color: rgb(242, 203, 96);
+    }
+    .glyphicon-gift {
+      color: rgb(231, 98, 98);
+    }
+
+    &:hover {
+      @include button-gradient(transparent, transparent);
+    }
+
+  }
+
+}
+
+#main {
+
+  background: url("../images/questions-wallpaper-2560x1600.jpg") no-repeat;
+
+  > .container {
+    padding: 0;
+    border-radius: 6px;
+    background-color: rgba($mixed-white, 0.5);
+    box-shadow: 0px 0px 3px 1px rgb(199, 196, 196);
+  }
+  section:not(:first-of-type) {
+    padding: 60px 70px;
+  }
+  section:first-of-type {
+
+    min-height: 550px;
+
+    .gallery-blockquote {
+      margin: 8% 5% 0;
+      font-size: 40px;
+      border: 0;
+
+      span {
+        color: #DFE3E4;
+        background-color: rgba(1, 1, 1, 0.7);
+        &:nth-of-type(even) {
+          color: #8A9BA3;
+        }
+        padding: 0px 30px;
+      }
+    }
+
+  }
+  section:nth-of-type(2) {
+    background-color: #FFFFFF;
+    .btn {
+      border-color: $orange;
+      &:hover {
+        @include button-gradient(transparent, transparent);
+      }
+    }
+  }
+  section:nth-of-type(3) {
+    background-color: #F3F3F3;
+    h2 {
+      color: #46C595;
+    }
+    .btn {
+      border-color: #46C595;
+      &:hover {
+        @include button-gradient(transparent, transparent);
+      }
+    }
+  }
+
+  section:nth-of-type(4) {
+    background-color: #E1E3E5;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    h2 {
+      color: #2E416C;
+    }
+    .btn {
+      border-color: #2E416C;
+      &:hover {
+        @include button-gradient(transparent, transparent);
+      }
+    }
+  }
+
+}
+
+footer {
+  background-color: $orange;
+  position: relative;
+  top: -50px;
+  z-index: -1;
+  margin-bottom: -50px;
+  color: white;
+  h2 {
+    text-align: center;
+    margin: 16% 0 10% 0;
+    font-family: sans-serif;
+  }
+}
