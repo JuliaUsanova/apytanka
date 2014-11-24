@@ -3,43 +3,61 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 @import "compass/css3";
+@import "variables";
 @import "graphics";
 @import "profile-page";
-
-$orange: #FA6F4F;
-$dark-orange: darken(#FA6F4F, 15%);
-$light-orange: lighten(#FA6F4F, 10%);
-
-$light-background: rgba(250, 162, 125, 0.05);
-$white: #fff;
-$mixed-white: mix($light-background, $white, 9);
-
-$grey: rgb(84, 81, 81);
+@import "login-form";
+@import "apytanka";
+@import "apytanka-list";
 
 
 @mixin button-gradient($color1, $color2) {
   background-color: $color1;
-  background-image: -webkit-linear-gradient(top, $color1 0, $color2 100%);
-  background-image: -o-linear-gradient(top, $color1 0, $color2 100%);
+  background-image: -webkit-linear-gradient(top, $color1 20%, $color2 100%);
+  background-image: -o-linear-gradient(top, $color1 20%, $color2 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, from($color1), to($color2));
-  background-image: linear-gradient(to bottom, $color1 0, $color2 100%);
+  background-image: linear-gradient(to bottom, $color1 20%, $color2 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=''+($color1), endColorstr=''+($color2), GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   background-repeat: repeat-x;
 }
 
-@mixin big-btn() {
+@mixin transition($time){
+  -webkit-transition: all $time linear;
+  -moz-transition: all $time linear;
+  -ms-transition: all $time linear;
+  -o-transition: all $time linear;
+  transition: all $time linear;
+  -webkit-appearance: none;
+}
+
+.big-btn{
   font-size: 16px;
   letter-spacing: 1px;
-  padding: 14px 20px;
+  padding: 10px 20px;
+}
+
+.btn-orange{
+  @include button-gradient($light-orange, $orange);
+  border-color: $dark-orange;
+  color: rgb(254, 252, 249);
+  &:hover{
+    color: rgba(254, 252, 249, 1);
+  }
 }
 
 body {
   background: $light-background;
-  font-family: serif;
+  font-family: sans-serif;
+  font-weight: lighter;
+  letter-spacing: 0.5px;
 }
 
 a {
+  color: $link-color;
+  &:hover, .facebook & {
+    color: $link-color-hover;
+  }
   cursor: pointer;
 }
 
@@ -47,8 +65,25 @@ p {
   min-height: 20px;
 }
 
-header {
-  margin: 3% 0 1%;
+hr{
+  border-color: $light-grey;
+}
+
+label, .c-label{
+  color: #b2b2b2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: bold;
+  margin-bottom: 0;
+  td &{
+    padding: 5px 10px;
+  }
+}
+
+#header {
+  padding: 2% 0;
   font-size: 15px;
 
   #logo .logo {
@@ -64,7 +99,7 @@ header {
       opacity: 0.9;
       font-size: 20px;
       font-family: monospace;
-      vertical-align: -20px;
+      vertical-align: -10px;
     }
   }
 
@@ -74,8 +109,8 @@ header {
 
     [data-toggle="dropdown"] {
 
-      @include button-gradient($light-orange, $orange);
-      @include big-btn();
+      @extend .btn-orange;
+      @extend .big-btn;
 
       border-color: $dark-orange;
 
@@ -99,7 +134,10 @@ header {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: $orange;
+  color: #5E5C5C;
+  #header &, &.orange {
+    color: $orange;
+  }
   footer & {
     color: white;
   }
@@ -110,6 +148,49 @@ b.dot {
   vertical-align: 3px;
 }
 
+.form-group.c-input{
+  margin-bottom: 0px;
+  border: 1px solid $light-grey;
+  padding: 0;
+
+  .form-control{
+    border: 0;
+    border-color: $light-grey;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height: 50px;
+    &:focus{
+      //      background-color: rgba(220,234,241,1.0);
+      background-color: $light-blue;
+    }
+    width: 100%;
+    @include transition(0.3s);
+  };
+
+  .radio{
+    margin: 10px;
+  }
+}
+
+.form-inline.c-inline{
+  margin-left: -1px;
+  .form-group.c-input:nth-of-type(n+2) {
+    margin-left: -1px;
+  }
+  .form-group.c-input:first-of-type {
+    margin-left: 1px;
+  }
+  +&{
+    margin-top: -1px;
+  }
+}
+
+.form-group.c-input, .form-inline + .form-inline .form-group.c-input{
+    margin-top: -1px;
+}
+
+
 .container-fluid {
   padding: 0;
 }
@@ -118,12 +199,15 @@ b.dot {
   outline-color: transparent;
 }
 
+.btn-lg{
+  font-size: 17px;
+}
+
 .login {
-  text-shadow: -0.5px -1px rgb(38, 35, 35);
-  color: rgb(183, 176, 176);
+  text-shadow: -0.5px -0.5px #322E2E;
+  letter-spacing: 2px;
+  font-family: sans-serif;
   &:hover {
-    text-shadow: -0.5px -1px $dark-orange;
-    color: $orange;
     text-decoration: none;
   }
 
@@ -133,7 +217,7 @@ b.dot {
 
   .btn {
     @include button-gradient($mixed-white, lighten($light-background, 80%));
-    @include big-btn();
+    @extend .big-btn;
 
     color: $grey;
 
@@ -154,7 +238,68 @@ b.dot {
 
 #main {
 
-  background: url("../images/questions-wallpaper-2560x1600.jpg") no-repeat;
+  .homepage, .apytanka-page {
+    section:nth-of-type(n+1) {
+      padding: 50px 70px;
+    }
+    section:first-of-type {
+
+      min-height: 550px;
+
+      blockquote {
+        padding: 8% 5%;
+        font-size: 40px;
+        border: 0;
+
+        span {
+          color: #DFE3E4;
+          background-color: rgba(1, 1, 1, 0.7);
+          &:nth-of-type(even) {
+            color: $background-image;
+          }
+          padding: 0px 30px;
+        }
+      }
+
+    }
+    section:nth-of-type(2) {
+      background-color: #FFFFFF;
+      .btn {
+        border-color: $orange;
+        &:hover {
+          @include button-gradient(transparent, transparent);
+        }
+      }
+    }
+    section:nth-of-type(3) {
+      background-color: #F3F3F3;
+      h2 {
+        color: #46C595;
+      }
+      .btn {
+        border-color: #46C595;
+        &:hover {
+          @include button-gradient(transparent, transparent);
+        }
+      }
+    }
+    section:last-of-type {
+      background-color: #E1E3E5;
+      h2 {
+        color: #2E416C;
+      }
+      .btn {
+        border-color: #2E416C;
+        &:hover {
+          @include button-gradient(transparent, transparent);
+        }
+      }
+    }
+  }
+
+  .homepage{
+    background: url("../images/questions-wallpaper-2560x1600.jpg") no-repeat;
+  }
 
   .container {
     padding: 0px;
@@ -162,66 +307,7 @@ b.dot {
     background-color: rgba($mixed-white, 0.5);
     box-shadow: 0px 2px 1px 1px rgba(1,1,1,0.25);
     overflow: hidden;
-
-     .homepage{
-       section:not(:first-of-type) {
-         padding: 60px 70px;
-       }
-       section:first-of-type {
-
-         min-height: 455px;
-
-         .gallery-blockquote {
-           margin: 8% 5% 0;
-           font-size: 40px;
-           border: 0;
-
-           span {
-             color: #DFE3E4;
-             background-color: rgba(1, 1, 1, 0.7);
-             &:nth-of-type(even) {
-               color: #8A9BA3;
-             }
-             padding: 0px 30px;
-           }
-         }
-
-       }
-       section:nth-of-type(2) {
-         background-color: #FFFFFF;
-         .btn {
-           border-color: $orange;
-           &:hover {
-             @include button-gradient(transparent, transparent);
-           }
-         }
-       }
-       section:nth-of-type(3) {
-         background-color: #F3F3F3;
-         h2 {
-           color: #46C595;
-         }
-         .btn {
-           border-color: #46C595;
-           &:hover {
-             @include button-gradient(transparent, transparent);
-           }
-         }
-       }
-
-       section:last-of-type {
-         background-color: #E1E3E5;
-         h2 {
-           color: #2E416C;
-         }
-         .btn {
-           border-color: #2E416C;
-           &:hover {
-             @include button-gradient(transparent, transparent);
-           }
-         }
-       }
-     }
+    min-height: 500px;
 
   }
 
@@ -236,8 +322,18 @@ footer {
   margin-bottom: -50px;
   color: white;
   h2 {
-    text-align: center;
     margin: 16% 0 10% 0;
     font-family: sans-serif;
   }
+}
+
+.space-block-t{
+  margin-top: 40px;
+}
+.space-block-b{
+  margin-bottom: 40px;
+}
+.space-block-b, .space-block-t{
+  min-height: 1px;
+  display: block;
 }
