@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html ng-app="user">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../js/common/common.js"></script>
+    <script src="../js/common/directives.js"></script>
+    <script src="../js/user/user.js"></script>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" media="screen, projection" rel="stylesheet">
+    <link href="../css/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <header id="header" class="container">
+        <nav class="navbar">
+            <div class="clearfix top-nav">
+                <div id="logo" class="clearfix">
+                    <p class="pull-left logo">Apytanka.by</p>
+                    <p class="pull-right">
+                        <a class="login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Войти</a>
+                    </p>
+                </div>
+                <div class="clearfix">
+                    <p class="clearfix sublogo col-sm-6 col-xs-12">
+                        <small>Ваше<b class="dot">.</b>мнение<b class="dot">.</b>имеет<b class="dot">.</b>значение!</small>
+                    </p>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="btn-group pull-left winner-block col-sm-9 col-xs-7" role="group" >
+                            <button type="button" class="btn btn-lg btn-default">
+                                <span class="glyphicon glyphicon-star"></span> Зоркі праекта
+                            </button>
+                            <button type="button" class="btn btn-lg btn-default">
+                                <span class="glyphicon glyphicon-gift"></span> Падарункі
+                            </button>
+                        </div>
+                        <div class="btn-group pull-right col-sm-3 col-xs-5">
+                            <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Катэгорыі <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                <li><a><span class="glyphicon glyphicon-headphones"></span>  Забавы</a></li>
+                                <li><a><span class="glyphicon glyphicon-heart-empty"></span>  Здароўе</a></li>
+                                <li><a><span class="glyphicon glyphicon-briefcase"></span>  Бізнэс</a></li>
+                                <li><a><span class="glyphicon glyphicon-road"></span>  Падарожжы</a></li>
+                                <li><a><span class="glyphicon glyphicon-th-large"></span>  Іншае</a></li>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="main">
+        <div class="profile container" ng-controller="profileCtrl">
+            <div class="clearfix">
+                <h2>Профіль</h2>
+                <hr>
+                <aside class="col-sm-3 col-xs-5">
+                    <ul class="list-unstyled">
+                        <li><a class="center-block"><span class="glyphicon glyphicon-user"></span> Пря мяне >></a></li>
+                        <li><a class="center-block"><span class="glyphicon glyphicon-list-alt"></span> Апытанкі >></a></li>
+                        <li><a class="center-block"><span class="glyphicon glyphicon-gift"></span> Падарункі >></a></li>
+                        <li><a class="center-block"><span class="glyphicon glyphicon-cog"></span> Налады >></a></li>
+                    </ul>
+                </aside>
+                <div class="col-sm-9 col-xs-7 pull-right">
+                    <section>
+                        <h3>
+                            Асабістыя дадзеныя
+                        </h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td rowspan="2">
+                                    <img ng-src="{{user.avatar}}" width="180" ng-show="user.avatar">
+                                    <div>
+                                            <a ng-click="selectFile()"><span class="glyphicon glyphicon-camera"></span> Запампаваць фота</a>
+                                        <input type="file" id="fileselect" value="" class="ng-hide" custom-on-change handler="setAvatar(params)"
+                                               ng-model="user.avatar">
+                                    </div>
+                                </td>
+                                <td colspan="2" class="form-group c-input">
+                                    <label for="name">Імя</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Вашае імя" ng-model="user.name">
+                                </td>
+                                <td colspan="2" class="form-group c-input">
+                                    <label for="surname">Імя па бацьку</label>
+                                    <input type="text" class="form-control" id="surname" placeholder="Вашае імя па бацьку" ng-model="user.surname">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="form-group c-input">
+                                    <label for="email1">Email</label>
+                                    <input type="email" class="form-control" id="email1" placeholder="Ваш email" ng-model="user.email">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="form-group c-input">
+                                    <div class="radio">
+                                        <label for="sex-f">
+                                            <input id="sex-f" type="radio" name="sex"  ng-model="user.gender" value="f"> Жанчына
+                                        </label>
+                                        <label for="sex-m">
+                                            <input id="sex-m" type="radio" name="sex"  ng-model="user.gender" value="m"> Мужчына
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="form-group c-input">
+                                    <label for="birthday">Дзень народзінаў</label>
+                                    <input id="birthday" class="form-control" type="date" ng-model="user.dateOfBirth">
+                                </td>
+                                <td class="form-group c-input">
+                                    <label for="country">Краіна</label>
+                                    <input type="text" id="country" class="form-control" ng-model="user.country">
+                                </td>
+                                <td class="form-group c-input">
+                                    <label for="city">Горад</label>
+                                    <input type="text" id="city" class="form-control" ng-model="user.city">
+                                </td>
+                                <td class="form-group c-input">
+                                    <label for="street">Вуліца</label>
+                                    <input type="text" id="street" class="form-control" ng-model="user.street">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h3>
+                            Прафесійныя скілы
+                        </h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td class="c-label">Адукацыя</td>
+                                    <td class="c-label">Спецыяльнасць</td>
+                                    <td class="c-label">Праца</td>
+                                    <td class="c-label">Стаж</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="skill in user.skills">
+                                    <td class="form-group c-input">
+                                        <label for="university" class="sr-only"></label>
+                                        <select ng-model="skill.university" class="form-control" id="university"
+                                                ng-options="u.value as u.name for u in profData.universities">
+                                            <option value="">Дзе вы навучаліся?</option>
+                                        </select>
+                                    </td>
+                                    <td class="form-group c-input">
+                                        <label for="speciality" class="sr-only"></label>
+                                        <select class="form-control" id="speciality" ng-model="skill.speciality"
+                                                ng-options="s.value as s.name for s in profData.specialities">
+                                            <option value="">На каго вучыліся?</option>
+                                        </select>
+                                    </td>
+                                    <td class="form-group c-input">
+                                        <label for="job" class="sr-only"></label>
+                                        <select class="form-control" id="job" class="sr-only" ng-model="skill.job"
+                                                ng-options="j.value as j.name for j in profData.jobs">
+                                            <option value="">Кім працуеце?</option>
+                                        </select>
+                                    </td>
+                                    <td class="form-group c-input">
+                                        <label for="experience" class="sr-only"></label>
+                                        <select class="form-control" id="experience" ng-model="skill.experience"
+                                                ng-options="e.value as e.name for e in profData.experience">
+                                            <option value="">Як доўга?</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="center-block" title="Выдалиць" ng-click="user.removeSkill(skill)">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="clearfix">
+                            <a class="btn btn-link pull-right" ng-click="user.addNewSkill()">+ Дадаць</a>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>
+                            Цікаўнасці
+                        </h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                <td class="c-label">Цікаўнасць</td>
+                                <td class="c-label">Удакладненне (што канкрэтна робіце, дзе, як і г.д.)</td>
+                                <td></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="interest in user.interests">
+                                <td class="form-group c-input">
+                                    <label for="interests-list" class="sr-only"></label>
+                                    <select class="form-control" id="interests-list" ng-model="interest.value" ng-options="i.value as i.name for i in interestsData">
+                                        <option value="">Што вас цікавіць?</option>
+                                    </select>
+                                </td>
+                                <td class="form-group c-input">
+                                    <label for="interest" class="sr-only"></label>
+                                    <input class="form-control" type="text" id="interest" ng-model="interest.descr">
+                                </td>
+                                <td>
+                                    <button class="center-block" title="Выдалиць" ng-click="user.removeInterest(interest)">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p class="clearfix">
+                            <a class="btn btn-link pull-right" ng-click="user.addNewInterest()">+ Дадаць</a>
+                        </p>
+                    </section>
+                    <p class="clearfix space-block-t space-block-b">
+                        <button class="btn btn-success btn-lg pull-right"> Захаваць змены</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <h2 >
+                <span class="center-block">Атрымаць адказ яшчэ ніколі не было так лёгка!</span>
+            </h2>
+            <p class="clearfix">
+                <cite class="pull-right">Распрацавана Мной</cite>
+            </p>
+        </div>
+    </footer>
+</div>
+
+
+
+
+
+</body>
+</html>
