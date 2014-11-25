@@ -1,6 +1,5 @@
 .apytanka-body{
   border: 1px solid $light-grey;
-  margin: 1px;
   background: rgba(255, 255, 255, 0.4);
   height: 110px;
   overflow: hidden;
@@ -58,7 +57,7 @@
     }
 
   & + &{
-    margin-top: 15px;
+    margin-top: -1px;
   }
 
 }
