@@ -9,6 +9,7 @@
 @import "login-form";
 @import "apytanka";
 @import "apytanka-list";
+@import "profile";
 
 
 @mixin button-gradient($color1, $color2) {
@@ -78,6 +79,7 @@ label, .c-label{
   font-weight: bold;
   margin-bottom: 0;
   padding: 0 5px;
+  word-break: break-word;
   td &{
     padding: 5px 10px;
   }
@@ -239,8 +241,8 @@ b.dot {
 
 #main {
 
-  .homepage, .apytanka-page {
-    section:nth-of-type(n+1) {
+  .page-content {
+    section:nth-of-type(n+2) {
       padding: 50px 70px;
     }
     section:first-of-type {
