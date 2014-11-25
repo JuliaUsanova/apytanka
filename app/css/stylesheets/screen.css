@@ -116,39 +116,39 @@
   width: 500px;
 }
 
-/* line 1, ../sass/_profile-page.scss */
+/* line 1, ../sass/_profile-edit.scss */
 .profile {
   background-color: #f9f9f9 !important;
   border: 1px solid #d6d6d6;
 }
-/* line 5, ../sass/_profile-page.scss */
+/* line 5, ../sass/_profile-edit.scss */
 .profile > div {
   padding: 10px;
 }
-/* line 6, ../sass/_profile-page.scss */
+/* line 6, ../sass/_profile-edit.scss */
 .profile aside {
   margin: 2% 0;
 }
-/* line 9, ../sass/_profile-page.scss */
+/* line 9, ../sass/_profile-edit.scss */
 .profile aside li {
   padding: 14px 15px;
   margin: -1px;
   font-weight: bolder;
 }
-/* line 14, ../sass/_profile-page.scss */
+/* line 14, ../sass/_profile-edit.scss */
 .profile aside li:hover {
   background: #7b929d;
 }
-/* line 16, ../sass/_profile-page.scss */
+/* line 16, ../sass/_profile-edit.scss */
 .profile aside li:hover a {
   color: white;
   text-decoration: none;
 }
-/* line 24, ../sass/_profile-page.scss */
+/* line 24, ../sass/_profile-edit.scss */
 .profile section {
   padding: 10px 0;
 }
-/* line 28, ../sass/_profile-page.scss */
+/* line 28, ../sass/_profile-edit.scss */
 .profile table {
   background-color: #ffffff;
 }
