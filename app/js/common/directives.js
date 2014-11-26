@@ -5,27 +5,6 @@
 
     var app = angular.module('customDirectives', []);
 
-//    app.directive('customOnChange', ['$timeout', function($timeout) {
-//        'use strict';
-//
-//        return {
-//            restrict: "A",
-//
-//            scope: {
-//                handler: '&'
-//            },
-//            link: function(scope, element){
-//                var handler = scope.handler();
-//
-//                element.bind('change',function(event){
-//                    handler(event, element);
-//                    $timeout(function(){}, 100);
-//                });
-//            }
-//
-//        };
-//    }]);
-
     app.directive('customOnChange', ['$timeout', function($timeout) {
         'use strict';
 
@@ -41,7 +20,7 @@
                     scope.$apply(function(){
                         var params = {event: event, el: element};
                         scope.handler({params: params});
-                        $timeout(function(){}, 100);
+                        $timeout(function(){}, 500);
                     });
                 });
             }
