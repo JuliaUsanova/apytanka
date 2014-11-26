@@ -5,7 +5,4 @@
 
     var userMod = angular.module('user', ['customDirectives', 'userControllers']);
 
-
-
-
 })();
