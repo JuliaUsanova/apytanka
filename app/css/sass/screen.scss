@@ -11,6 +11,7 @@
 @import "apytanka-list";
 @import "profile";
 @import "apytanka-discussion";
+@import "add-apytanka";
 
 
 @mixin button-gradient($color1, $color2) {
@@ -88,6 +89,7 @@ label, .c-label{
 
 textarea{
   max-width: 100%;
+  min-height: 135px;
 }
 
 #header {
