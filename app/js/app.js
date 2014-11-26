@@ -2,7 +2,7 @@
  * Created by юля on 17.11.2014.
  */
 (function(){
-    var app = angular.module('myApp', ['user', 'ngRoute']);
+    var app = angular.module('myApp', ['user', 'ngRoute', 'apytanka']);
 
     app.controller('appCtrl', ['$scope', function($scope){
         $scope.template = {
