@@ -6,16 +6,34 @@
 
     var userControllers = angular.module('userControllers', []);
 
-    userControllers.controller('profileCtrl', ['$scope', 'User', function($scope, User){
-        var userData = {
-            id: 1, name: 'User', surname: 'Userov', email: 'user@gmail.com', avatar: '../css/images/563469251.png', gender: 'f',
-            dateOfBirth: 634600800000, country: 'Belarus', city: 'Minsk', street: 'Russianova',
-            skills: [
-                {university: 0, speciality: 1, job: 4, experience: 0},
-                {university: 3, speciality: 2, job: 0, experience: 2}
-            ],
-            interests: [{value: 0, descr: 'tra ta ta'},{value: 1, descr: 'like to listen the music'},{value: 4, descr: 'do sport every day'},{value: 5, descr: ''}]
+    userControllers.controller('loginCtrl', ['$scope', 'User', '$element', function($scope, User, $element){
+
+        $scope.logIn = function(){
+            $.post('', {userLogin:{email: $scope.enteredEmail, password: $scope.enteredPsw}}, function(data){
+
+            });
+
+            var userData = {
+                id: 1, name: 'User', surname: 'Userov', email: 'user@gmail.com', avatar: '../css/images/563469251.png', gender: 'f',
+                dateOfBirth: 634600800000, country: 'Belarus', city: 'Minsk', street: 'Russianova',
+                skills: [
+                    {university: 0, speciality: 1, job: 4, experience: 0},
+                    {university: 3, speciality: 2, job: 0, experience: 2}
+                ],
+                interests: [{value: 0, descr: 'tra ta ta'},{value: 1, descr: 'like to listen the music'},{value: 4, descr: 'do sport every day'},{value: 5, descr: ''}]
+            };
+
+            $scope.currentUser = User(userData);
+
+            if($element.hasClass('modal')) jQuery('#' + $element.attr('id')).modal('hide');
+
         };
+
+
+    }]);
+
+    userControllers.controller('profileCtrl', ['$scope', 'User', function($scope, User){
+
 
 
         $scope.selectFile = function(){
@@ -69,9 +87,6 @@
         $scope.interestsData = [{value: 0, name: "Раслінавоцтва"}, {value: 1, name: "Музыка"}, {value: 2, name: "Танцы"}, {value: 3, name: "Маляванне"},
             {value: 4, name: "Спорт"}, {value: 5, name: "Вегетарыянства"}, {value: 6, name: "Развядзенне жывел"}, {value: 7, name: "Кансалтынг"},
             {value: 8, name: "Турызм"}, {value: 9, name: "Дызайн"}];
-
-
-        $scope.currentUser = new User(userData);
 
 
 
