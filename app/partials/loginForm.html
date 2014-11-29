@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="../js/common/common.js"></script>
     <script src="../js/common/directives.js"></script>
+    <script src="../js/user/userControllers.js"></script>
     <script src="../js/user/user.js"></script>
+    <script src="../js/apytanka/apytanka.js"></script>
+    <script src="../js/app.js"></script>
     <link href="../bower_components/bootstrap/dist/css/bootstrap.css" media="screen, projection" rel="stylesheet">
     <link href="../css/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
 </head>
 <body>
 <div>
 
-    <div class="modal fade bs-example-modal-lg c-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade bs-example-modal-lg c-modal" tabindex="-1" role="dialog"
+         ng-controller="loginCtrl" aria-hidden="true" id="loginForm">
         <div class="form-container">
             <p class="clearfix">
                 <a class="close pull-right"></a>
@@ -31,11 +36,11 @@
 
                 <div class="form-group c-input">
                     <label class="sr-only"></label>
-                    <input class="form-control" placeholder="Email">
+                    <input class="form-control" placeholder="Email" data-ng-model="enteredEmail">
                 </div>
                 <div class="form-group c-input">
                     <label class="sr-only"></label>
-                    <input class="form-control" placeholder="Пароль">
+                    <input class="form-control" placeholder="Пароль" data-ng-model="enteredPsw">
                 </div>
                 <div class="form-group">
                     <p class="facebook">
@@ -53,7 +58,7 @@
                         <p><small><b class="text-muted">Няма акаўнту? </b> <a>Рэгістрацыя</a></small></p>
                     </div>
                     <p class="col-xs-4">
-                        <button class="btn big-btn btn-orange pull-right">Уваход</button>
+                        <button class="btn big-btn btn-orange pull-right" ng-click="logIn()">Уваход</button>
                     </p>
 
                 </div>
