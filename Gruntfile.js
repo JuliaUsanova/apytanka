@@ -34,19 +34,18 @@ module.exports = function(grunt) {
             },
 
             karma: {
-                files: ['app/test/unit/*.js'],
+                files: ['app/js/*_test.js'],
                 tasks: ['karma:unit:run'] //NOTE the :run flag
             }
+//            ,
+//
+//            protractor: {
+//                 files: ['app/test/e2e/*.js'],
+//                 tasks: ['protractor']
+//            }
         },
 
         compass: {
-//            basePath: '/',
-//            compile: {
-//                options: {
-//                    basePath: './app/css',
-//                    config: './app/css/sass/config.rb'
-//                }
-//            },
             prod: {                   // Target
                 options: {              // Target options
                     sassDir: ['app/css/sass'],
@@ -78,7 +77,7 @@ module.exports = function(grunt) {
         protractor: {
             options: {
                 configFile: "conf.js", // Default config file
-                keepAlive: false, // If false, the grunt process stops when the test fails.
+                keepAlive: true, // If false, the grunt process stops when the test fails.
                 noColor: false, // If true, protractor will not use colors in its output.
                 args: {
                     framework: 'jasmine',
@@ -86,12 +85,13 @@ module.exports = function(grunt) {
                     capabilities: {
                         browserName: 'firefox'
                     },
-                    chromeDriver: 'C:/Users/юля/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
+//                    chromeDriver: 'C:/Users/юля/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
+                    chromeDriver: 'C:/Users/julia/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
                     seleniumAddress: 'http://localhost:4444/wd/hub',
-                    specs: ['test/e2e/*_spec.js'] // Arguments passed to the command
+                    specs: ['test/e2e/login-form.js'] // Arguments passed to the command
                 }
             },
-            your_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
+            all: {
                 options: {
                     configFile: "conf.js", // Target-specific config file
                     args: {} // Target-specific arguments
@@ -118,6 +118,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-karma');
 
+    grunt.registerTask('test', ['protractor:all']);
     grunt.registerTask('dev', ['compass:dev']);
 
     grunt.registerTask('default', ['bower', 'dev' , 'uglify' , 'watch']);
