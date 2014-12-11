@@ -10,6 +10,9 @@
             footer: '../app/partials/footer.html',
             main: '../app/partials/main.html'
         };
+
     }]);
+
+
 
 })();
