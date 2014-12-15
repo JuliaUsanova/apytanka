@@ -7,10 +7,10 @@ exports.config = {
     capabilities: {
         browserName: 'firefox'
     },
-//    chromeDriver: 'C:/Users/юля/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
-    chromeDriver: 'C:/Users/julia/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
+    chromeDriver: 'C:/Users/юля/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
+//    chromeDriver: 'C:/Users/julia/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['test/e2e/login-form.js'],
-    baseUrl: ''
+    specs: ['test/e2e/*.js'],
+    baseUrl: 'http://test.apytanka.by/'
 
 };

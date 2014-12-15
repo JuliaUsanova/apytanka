@@ -85,16 +85,15 @@ module.exports = function(grunt) {
                     capabilities: {
                         browserName: 'firefox'
                     },
-//                    chromeDriver: 'C:/Users/юля/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
-                    chromeDriver: 'C:/Users/julia/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
+                    chromeDriver: 'C:/Users/юля/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
+//                    chromeDriver: 'C:/Users/julia/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
                     seleniumAddress: 'http://localhost:4444/wd/hub',
-                    specs: ['test/e2e/login-form.js'] // Arguments passed to the command
+                    specs: ['test/e2e/*.js'] // Arguments passed to the command
                 }
             },
             all: {
                 options: {
-                    configFile: "conf.js", // Target-specific config file
-                    args: {} // Target-specific arguments
+                    configFile: "conf.js"
                 }
             }
         },
