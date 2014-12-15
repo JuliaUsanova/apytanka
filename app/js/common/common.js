@@ -5,6 +5,12 @@
 jQuery(document).ready(function(){
     jQuery('.carousel').carousel();
 
-    jQuery('.modal').modal('show');
+    jQuery('body').on('click', '.modal .close', function(){
+        $(this).parents('.modal').modal('hide');
+    });
+
+    jQuery('.container-fluid').on('click', '.login', function(){
+        jQuery('#loginForm').modal('show');
+    });
 
 });
