@@ -11,19 +11,19 @@
         var User = (function(){
 
             function UserClass ( data ) {
-                this.id = data.id;
-                this.name = data.name;
-                this.surname = data.surname;
-                this.email = data.email;
-                this.gender = data.gender;
-                this.dateOfBirth = new Date(data.dateOfBirth);
-                this.country = data.country;
-                this.city = data.city;
-                this.street = data.street;
-                this.skills = data.skills || [{value: '', name: ''}];
-                this.interests = data.interests || [{value: '', descr: ''}];
-                this.avatar = (data.avatar);
-                this.registered = true;
+                this.id = data ? data.id : null;
+                this.name = data ? data.name : null;
+                this.surname = data ? data.surname : null;
+                this.email = data ? data.email : null;
+                this.gender = data ? data.gender : null;
+                this.dateOfBirth = data ? new Date(data.dateOfBirth) : new Date();
+                this.country = data ? data.country : null;
+                this.city = data ? data.city : null;
+                this.street = data ? data.street : null;
+                this.skills = data ? data.skills : [{value: '', name: ''}];
+                this.interests = data ? data.interests : [{value: '', descr: ''}];
+                this.avatar = data ? data.avatar : 'css/images/default-user-image.png';
+                this.newAvatar = null;
             }
 
             UserClass.prototype.addNewSkill = function(){
@@ -44,37 +44,75 @@
                 this.interests.splice(index, 1);
             };
 
+            UserClass.prototype.update = function(data){
+                if (this.id == data.id) {
+                    data.avatar = data.newAvatar;
+                    setUser(data);
+                }
+            };
+
             return UserClass;
 
         })();
-        var self = this;
+        var user = new User();
 
+        var registered = false;
 
-        function setUser (url, method, data){
-
-            var userData = {
-                id: 1, name: 'User', surname: 'Userov', email: 'user@gmail.com', avatar: '../css/images/563469251.png', gender: 'f',
-                dateOfBirth: 634600800000, country: 'Belarus', city: 'Minsk', street: 'Russianova',
-                skills: [
-                    {university: 0, speciality: 1, job: 4, experience: 0},
-                    {university: 3, speciality: 2, job: 0, experience: 2}
-                ],
-                interests: [{value: 0, descr: 'tra ta ta'},{value: 1, descr: 'like to listen the music'},{value: 4, descr: 'do sport every day'},{value: 5, descr: ''}]
-            };
+        function downloadUserData(url, method, data){
 
 //            $http.get(url, {method: data}).success(function(){
-                self.user = new User(userData);
-                return true;
-//            });
 
+            setUser (data);
+
+            return registered;
+
+//            });
+        };
+
+        function setUser (data){
+            for (var k in user){
+                if (user.hasOwnProperty(k)) {
+                    if(k == 'dateOfBirth'){
+                        user[k] = new Date(data[k]);
+                    }
+                    else user[k] = data[k];
+                }
+            };
+            registered = true;
+
+
+        };
+
+        var userData = {
+            id: 1, name: 'User', surname: 'Userov', email: 'user@gmail.com', avatar: 'css/images/563469251.png', gender: 'f',
+            dateOfBirth: 634600800000, country: 'Belarus', city: 'Minsk', street: 'Russianova',
+            skills: [
+                {university: 0, speciality: 1, job: 4, experience: 0},
+                {university: 3, speciality: 2, job: 0, experience: 2}
+            ],
+            interests: [{value: 0, descr: 'tra ta ta'},{value: 1, descr: 'like to listen the music'},{value: 4, descr: 'do sport every day'},{value: 5, descr: ''}]
         };
 
         this.loginUser = function(data){
-            setUser('login', 'loginUser', data);
+            data = userData;
+            if (downloadUserData('login', 'loginUser', data)) return true;
         };
 
         this.registerUser = function(data){
-            setUser('register', 'registerUser', data);
+            data = userData;
+            if (downloadUserData('register', 'registerUser', data)) return true;
+        };
+
+        this.isRegistered = function(){
+            return registered;
+        };
+
+        this.getUser = function(){
+            return user;
+        };
+
+        this.changeAvatar  = function(link){
+            user.newAvatar = link;
         };
 
     }]);
