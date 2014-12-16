@@ -10,15 +10,14 @@
         padding: 14px 15px;
         margin: -1px;
         font-weight: bolder;
-
-          &:hover{
+          &:hover, &.on{
             background: rgba(123, 146, 157, 1);
             a{
               color: white;
               text-decoration: none;
             }
           }
-  }
+      }
     }
 
     section{
