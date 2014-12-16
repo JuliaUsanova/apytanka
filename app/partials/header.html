@@ -1,10 +1,13 @@
-<header id="header" class="container">
+
     <nav class="navbar">
         <div class="clearfix top-nav">
             <div id="logo" class="clearfix">
-                <p class="pull-left logo">Apytanka.by</p>
+                <a href="/"><p class="pull-left logo">Apytanka.by</p></a>
                 <p class="pull-right">
-                    <a class="login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Войти</a>
+                    <a class="login" id="login" ng-hide="user.name"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Войти</a>
+                    <a class="login" ng-show="user.name" href="user-profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.name}}
+                        <span class="user-photo img-circle"><img ng-src="{{user.avatar}}"></span>
+                    </a>
                 </p>
             </div>
             <div class="clearfix">
@@ -39,4 +42,3 @@
             </div>
         </div>
     </nav>
-</header>
