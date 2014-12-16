@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
         $(this).parents('.modal').modal('hide');
     });
 
-    jQuery('.container-fluid').on('click', '.login', function(){
+    jQuery('.container-fluid').on('click', '#login', function(){
         jQuery('#loginForm').modal('show');
     });
 
