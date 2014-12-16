@@ -1,7 +1,7 @@
 
-    <div id="main">
+
         <div class="apytanka-page page-content" ng-controller="apytankaCtrl">
-            <div class="container">
+            <div class="container-fluid">
                 <section>
                     <blockquote class="text-uppercase">
                         <span>Чаго не хапае</span>
@@ -60,22 +60,17 @@
                                 <a>
                                     <img ng-src="{{apytanka.user.avatar}}" class="img-responsive">
                                     <cite class="text-muted author small">
-                                        Julia Usanova
+                                        {{apytanka.user.name + ' ' + apytanka.user.surname}}
                                     </cite>
                                 </a>
                             </div>
                             <div class="col-xs-7 col-sm-10 descr-block">
-                                <h4><a>Title may be too long, even longer than the pape size, but it doesn't matter
-                                    <br><small>Belarus, Minsk, 22.11.2014 </small></a></h4>
+                                <h4><a>{{apytanka.title}}
+                                    <br><small>{{apytanka.user.country}}, {{apytanka.user.city}}, {{apytanka.date}} </small></a></h4>
 
                                 <div>
                                     <p>
-                                        Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                                        may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                                    </p>
-                                    <p>
-                                        Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                                        may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
+                                        {{apytanka.content}}
                                     </p>
                                 </div>
                             </div>
@@ -85,96 +80,14 @@
                                         <a class="glyphicon glyphicon-heart"></a>
                                     </h3>
                                     <hr>
-                                    20
+                                    {{apytanka.rating.likes.length}}
                                 </div>
                                 <div class="col-xs-6">
                                     <h3>
                                         <a class="glyphicon glyphicon-minus"></a>
                                     </h3>
                                     <hr>
-                                    0
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix apytanka-body">
-                            <div class="col-xs-3 col-sm-1 logo-block">
-                                <a>
-                                    <img src="../css/images/563469251.png" class="img-responsive">
-                                    <cite class="text-muted author small">
-                                        Julia Usanova
-                                    </cite>
-                                </a>
-                            </div>
-                            <div class="col-xs-7 col-sm-10 descr-block">
-                                <h4><a>Title may be too long, even longer than the pape size, but it doesn't matter
-                                    <br><small>Belarus, Minsk, 22.11.2014 </small></a></h4>
-
-                                <div>
-                                    <p>
-                                        Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                                        may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                                    </p>
-                                    <p>
-                                        Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                                        may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 col-sm-1 results lead text-center">
-                                <div class="col-xs-6">
-                                    <h3>
-                                        <a class="glyphicon glyphicon-heart"></a>
-                                    </h3>
-                                    <hr>
-                                    20
-                                </div>
-                                <div class="col-xs-6">
-                                    <h3>
-                                        <a class="glyphicon glyphicon-minus"></a>
-                                    </h3>
-                                    <hr>
-                                    0
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix apytanka-body">
-                            <div class="col-xs-3 col-sm-1 logo-block">
-                                <a>
-                                    <img src="../css/images/563469251.png" class="img-responsive">
-                                    <cite class="text-muted author small">
-                                        Julia Usanova
-                                    </cite>
-                                </a>
-                            </div>
-                            <div class="col-xs-7 col-sm-10 descr-block">
-                                <h4><a>Title may be too long, even longer than the pape size, but it doesn't matter
-                                    <br><small>Belarus, Minsk, 22.11.2014 </small></a></h4>
-
-                                <div>
-                                    <p>
-                                        Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                                        may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                                    </p>
-                                    <p>
-                                        Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                                        may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 col-sm-1 results lead text-center">
-                                <div class="col-xs-6">
-                                    <h3>
-                                        <a class="glyphicon glyphicon-heart"></a>
-                                    </h3>
-                                    <hr>
-                                    20
-                                </div>
-                                <div class="col-xs-6">
-                                    <h3>
-                                        <a class="glyphicon glyphicon-minus"></a>
-                                    </h3>
-                                    <hr>
-                                    0
+                                    {{apytanka.rating.dislikes.length}}
                                 </div>
                             </div>
                         </div>
@@ -197,4 +110,4 @@
                 </section>
         </div>
         </div>
-    </div>
+
