@@ -169,6 +169,7 @@ b.dot {
 
   .form-control{
     border: 0;
+    padding: 15px 12px;
     border-color: $light-grey;
     border-radius: 0px;
     -webkit-box-shadow: none;
@@ -221,10 +222,13 @@ b.dot {
   text-shadow: -0.5px -0.5px #322E2E;
   letter-spacing: 2px;
   font-family: sans-serif;
-  &:hover {
+  &:hover, &:focus {
     text-decoration: none;
   }
-
+  img{
+    vertical-align: top;
+    height: 100%;
+  }
 }
 
 .winner-block {
@@ -344,10 +348,20 @@ footer {
 .space-block-t{
   margin-top: 40px;
 }
+
 .space-block-b{
   margin-bottom: 40px;
 }
+
 .space-block-b, .space-block-t{
   min-height: 1px;
   display: block;
+}
+
+.user-photo{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  vertical-align: middle;
 }
