@@ -4,11 +4,11 @@
 
 (function(){
 
-    var userControllers = angular.module('userControllers', []);
+    var userControllers = angular.module('userControllers', ['user']);
 
     userControllers.controller('loginCtrl', ['$scope', 'userService', '$element', function($scope, userService, $element){
 
-        $scope.registered = userService.user ? userService.user.registered : false;
+        $scope.registered = userService.isRegistered();
 
         $scope.userData = {email: '', psw: '', name: '', surname: ''};
 
@@ -48,7 +48,7 @@
                     reader.readAsDataURL(file);
 
                     reader.onload = function(e) {
-                        $scope.currentUser.avatar = (e.target.result);
+                        userService.changeAvatar(e.target.result);
                     };
 
 
