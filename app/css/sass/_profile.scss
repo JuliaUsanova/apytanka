@@ -30,10 +30,10 @@
       }
 
       .img-circle.user-photo{
-        border: 10px solid transparentize($orange, 0.43);
+        border: 7px solid transparentize($orange, 0.43);
         width: 150px;
         height: 150px;
-        overflow: hidden;
+        display: block;
       }
 
       .tab-pane-c{
