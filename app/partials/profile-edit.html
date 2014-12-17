@@ -6,9 +6,21 @@
                 <hr>
                 <aside class="col-sm-3 col-xs-5">
                     <ul class="list-unstyled">
-                        <li><a class="center-block" ng-class="{ on : currentOn.about }" href="user-profile/about"><span class="glyphicon glyphicon-user"></span> Пря мяне >></a></li>
-                        <li><a class="center-block" ng-class="{ on : currentOn.apytanki }" href="user-profile/apytanki"><span class="glyphicon glyphicon-list-alt"></span> Апытанкі >></a></li>
-                        <li><a class="center-block" ng-class="{ on : currentOn.settings }" href="user-profile/settings"><span class="glyphicon glyphicon-cog"></span> Налады >></a></li>
+                        <li ng-class="{ on : currentOn.about }">
+                            <a class="center-block" href="user-profile/about">
+                                <span class="glyphicon glyphicon-user"></span> Пря мяне >>
+                            </a>
+                        </li>
+                        <li ng-class="{ on : currentOn.apytanki }">
+                            <a class="center-block" href="user-profile/apytanki">
+                                <span class="glyphicon glyphicon-list-alt"></span> Апытанкі >>
+                            </a>
+                        </li>
+                        <li ng-class="{ on : currentOn.settings }">
+                            <a class="center-block" href="user-profile/settings">
+                                <span class="glyphicon glyphicon-cog"></span> Налады >>
+                            </a>
+                        </li>
                     </ul>
                 </aside>
                 <div ng-switch on="renderPath[ 1 ]" class="col-sm-9 col-xs-7 pull-right">
