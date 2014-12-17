@@ -31,7 +31,7 @@
   -ms-transition: all $time linear;
   -o-transition: all $time linear;
   transition: all $time linear;
-  -webkit-appearance: none;
+  -webkit-appearance: fadeIn;
 }
 
 .big-btn{
@@ -260,7 +260,7 @@ b.dot {
     section:nth-of-type(n+2) {
       padding: 50px 70px;
     }
-    section:first-of-type {
+    section#first {
 
       min-height: 550px;
 
@@ -364,4 +364,13 @@ footer {
   height: 40px;
   overflow: hidden;
   vertical-align: middle;
+}
+.form-control.ng-dirty.ng-invalid, .form-control.ng-touched.ng-invalid {
+  border: 1px solid red;
+
+  &:focus{
+    box-shadow: 0px 0px 3px -1px rgba(255, 0, 0, 0.8);
+    outline-color: rgba(250, 37, 37, 0);
+  }
+  @include transition(0.2s);
 }
