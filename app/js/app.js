@@ -19,11 +19,13 @@
                 }).
                 when('/user-profile/about', {
                     templateUrl: './partials/profile-edit.html',
-                    action: 'profile.about'
+                    action: 'profile.about',
+                    controller: 'profileCtrl'
                 }).
                 when('/user-profile/apytanki', {
                     templateUrl: './partials/profile-edit.html',
-                    action: 'profile.apytanki'
+                    action: 'profile.apytanki',
+                    controller: 'apytankaCtrl'
                 }).
                 when('/user-profile/settings', {
                     templateUrl: './partials/profile-edit.html',
