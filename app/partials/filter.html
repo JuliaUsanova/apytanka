@@ -1,0 +1,95 @@
+<section>
+    <h3>Сартаваць па:</h3>
+    <nav class="clearfix form-inline c-inline">
+        <div class="form-group c-input col-xs-4 col-sm-2">
+            <label for="filter1">GHJHUP
+                <a class="glyphicon glyphicon-chevron-up"></a>
+                <a class="glyphicon glyphicon-chevron-down"></a>
+            </label>
+            <select id="filter1" class="form-control">
+                <option>1</option>
+            </select>
+        </div>
+        <div class="form-group c-input col-xs-4 col-sm-2">
+            <label for="filter2">GHJHUP
+                <a class="glyphicon glyphicon-chevron-up"></a>
+                <a class="glyphicon glyphicon-chevron-down"></a>
+            </label>
+            <select class="form-control" id="filter2">
+                <option>2</option>
+            </select>
+        </div>
+        <div class="form-group c-input col-xs-4 col-sm-2">
+            <label for="filter3">GHJHUP</label>
+            <select class="form-control" id="filter3">
+                <option>2</option>
+            </select>
+        </div>
+        <div class="form-group c-input col-xs-8 col-sm-3">
+            <label for="search-filter">Пошук</label>
+            <input type="text" class="form-control" id="search-filter">
+        </div>
+        <div class="col-xs-4 col-sm-3">
+            <p class="btn-group pull-right">
+                <button class="btn btn-default btn-block">Дадаць праблему</button>
+            </p>
+        </div>
+    </nav>
+
+
+</section>
+<section>
+    <div>
+        <div class="clearfix apytanka-body" ng-repeat="apytanka in apytankaList">
+            <div class="col-xs-3 col-sm-1 logo-block">
+                <a>
+                    <img ng-src="{{apytanka.user.avatar}}" class="img-responsive">
+                    <cite class="text-muted author small">
+                        {{apytanka.user.name + ' ' + apytanka.user.surname}}
+                    </cite>
+                </a>
+            </div>
+            <div class="col-xs-7 col-sm-10 descr-block">
+                <h4><a>{{apytanka.title}}
+                    <br><small>{{apytanka.user.country}}, {{apytanka.user.city}}, {{apytanka.date}} </small></a></h4>
+
+                <div>
+                    <p>
+                        {{apytanka.content}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-1 results lead text-center">
+                <div class="col-xs-6">
+                    <h3>
+                        <a class="glyphicon glyphicon-heart"></a>
+                    </h3>
+                    <hr>
+                    {{apytanka.rating.likes.length}}
+                </div>
+                <div class="col-xs-6">
+                    <h3>
+                        <a class="glyphicon glyphicon-minus"></a>
+                    </h3>
+                    <hr>
+                    {{apytanka.rating.dislikes.length}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="clearfix">
+        <nav class="pull-right">
+            <ul class="pagination">
+                <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
