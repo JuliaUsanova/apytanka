@@ -1,7 +1,6 @@
 .apytanka-body{
   border: 1px solid $light-grey;
   background: rgba(255, 255, 255, 0.4);
-  height: 110px;
   overflow: hidden;
   @include transition(0.3s);
   &:hover{
@@ -20,12 +19,6 @@
         text-decoration: none;
         border-bottom: 1px dashed;
       }
-    }
-
-    .descr-block{
-      height: 100px;
-      overflow-y: scroll;
-      overflow-x: hidden;
     }
 
     .results{
