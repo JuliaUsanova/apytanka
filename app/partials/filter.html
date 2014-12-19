@@ -38,46 +38,7 @@
 
 
 </section>
-<section>
-    <div>
-        <div class="clearfix apytanka-body" ng-repeat="apytanka in apytankaList">
-            <div class="col-xs-3 col-sm-1 logo-block">
-                <a>
-                    <img ng-src="{{apytanka.user.avatar}}" class="img-responsive">
-                    <cite class="text-muted author small">
-                        {{apytanka.user.name + ' ' + apytanka.user.surname}}
-                    </cite>
-                </a>
-            </div>
-            <div class="col-xs-7 col-sm-10 descr-block">
-                <h4><a>{{apytanka.title}}
-                    <br><small>{{apytanka.user.country}}, {{apytanka.user.city}}, {{apytanka.date}} </small></a></h4>
-
-                <div>
-                    <p>
-                        {{apytanka.content}}
-                    </p>
-                </div>
-            </div>
-            <div class="col-xs-2 col-sm-1 results lead text-center">
-                <div class="col-xs-6">
-                    <h3>
-                        <a class="glyphicon glyphicon-heart"></a>
-                    </h3>
-                    <hr>
-                    {{apytanka.rating.likes.length}}
-                </div>
-                <div class="col-xs-6">
-                    <h3>
-                        <a class="glyphicon glyphicon-minus"></a>
-                    </h3>
-                    <hr>
-                    {{apytanka.rating.dislikes.length}}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<section ng-include="'apytanka.html'"></section>
 <section>
     <div class="clearfix">
         <nav class="pull-right">
