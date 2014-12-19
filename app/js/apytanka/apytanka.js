@@ -24,12 +24,15 @@
         Apytanka.prototype.like = function(){
             console.log(user.id);
         };
+        Apytanka.prototype.dislike = function(){
+            console.log(user.id);
+        };
 
         return Apytanka;
 
     }]);
 
-    apytanka.controller('apytankaCtrl', ['$scope', 'Apytanka', function($scope, Apytanka){
+    apytanka.controller('apytankaCtrl', ['$scope', '$http', 'Apytanka', function($scope, $http, Apytanka){
 
         $scope.apytankaList = [];
 
