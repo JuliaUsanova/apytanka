@@ -31,6 +31,10 @@
                     templateUrl: './partials/profile-edit.html',
                     action: 'profile.settings'
                 }).
+                when('/apytanka/:id', {
+                    templateUrl: './partials/apytanka-discussion.html',
+                    controller: ''
+                }).
                 otherwise({
                     redirectTo: '/'
                 });
