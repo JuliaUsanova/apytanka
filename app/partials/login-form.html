@@ -17,7 +17,7 @@
                     </br>
                     <small>Зойме менш за хвіліну</small>
                 </h3>
-                <small class="text-warning" ng-show="loginForm.uEmail.$touched || loginForm.uPsw.$touched">
+                <small class="text-warning" ng-show="loginForm.$submitted">
                     <span ng-show="loginForm.uEmail.$error.required">Tell us your email.</span>
                     <span ng-show="loginForm.uEmail.$error.email">This is not a valid email.</span>
                     <span ng-show="loginForm.uPsw.$error.minlength">Psw too short.</span>
@@ -27,16 +27,16 @@
             <div ng-show="!registered" class="clearfix form-inline c-inline">
                 <div class="form-group c-input col-xs-6 grid">
                     <label class="sr-only" for="user-name"></label>
-                    <input class="form-control" id="user-name" placeholder="Імя" name="uName" data-ng-model="userData.name">
+                    <input class="form-control" id="user-name" required placeholder="Імя" name="uName" data-ng-model="userData.name">
                 </div>
                 <div class="form-group c-input col-xs-6 grid">
                     <label class="sr-only" for="surname"></label>
-                    <input class="form-control" id="surname" placeholder="Прозвішча" name="uSurname" data-ng-model="userData.surname">
+                    <input class="form-control" id="surname" placeholder="Прозвішча" name="uSurname" required data-ng-model="userData.surname">
                 </div>
             </div>
             <div class="form-group c-input">
                 <label class="sr-only" for="email"></label>
-                <input class="form-control" id="email" placeholder="Email" type="email" name="uEmail" required="" data-ng-model="userData.email">
+                <input class="form-control" id="email" placeholder="Email" type="email" name="uEmail" required data-ng-model="userData.email">
             </div>
             <div class="form-group c-input">
                 <label class="sr-only" for="psw"></label>
@@ -58,7 +58,7 @@
                     <p><small><b class="text-muted">Няма акаўнту? </b> <a ng-click="registered = false">Рэгістрацыя</a></small></p>
                 </div>
                 <p class="col-xs-4">
-                    <button class="btn big-btn btn-orange pull-right" ng-click="logIn()">Уваход</button>
+                    <input type="submit" ng-disabled="loginForm.uEmail.$error || loginForm.uPsw.$error" class="btn big-btn btn-orange pull-right" ng-click="logIn()" value="Уваход">
                 </p>
 
             </div>
@@ -67,8 +67,9 @@
                     <p><small><b class="text-muted">Есць акаўнт? </b> <a ng-click="registered = true">Увайсці</a></small></p>
                 </div>
                 <p class="col-xs-4">
-                    <button class="btn big-btn btn-orange pull-right" ng-click="register()">Гатова</button>
-                </p>
+                    <input type="submit" class="btn big-btn btn-orange pull-right"
+                            ng-disabled="!loginForm.$valid"
+                            ng-click="register()" value="Гатова">
             </div>
         </form>
         <form ng-show="registered" class="help-block text-center">
