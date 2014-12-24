@@ -16,16 +16,16 @@
             this.title = data.title || '';
             this.content = data.content || '';
             this.date = new Date(data.date);
-            this.rating = data.rating;
-//            this.likes = data.likes || [];
-//            this.dislikes = data.dislikes || [];
+            this.rating = data.rating || {likes: [], dislikes: []};
 
         }
         Apytanka.prototype.like = function(){
-            console.log(user.id);
+            var index = this.rating.likes.indexOf(user.id);
+            index == -1 ? this.rating.likes.push(user.id) : this.rating.likes.splice(index, 1);
         };
         Apytanka.prototype.dislike = function(){
-            console.log(user.id);
+            var index = this.rating.dislikes.indexOf(user.id);
+            index == -1 ? this.rating.dislikes.push(user.id) : this.rating.dislikes.splice(index, 1);
         };
 
         return Apytanka;
