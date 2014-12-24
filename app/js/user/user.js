@@ -99,7 +99,6 @@
         };
 
         this.registerUser = function(data){
-            data = userData;
             if (downloadUserData('register', 'registerUser', data)) return true;
         };
 
