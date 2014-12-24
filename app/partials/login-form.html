@@ -58,9 +58,8 @@
                     <p><small><b class="text-muted">Няма акаўнту? </b> <a ng-click="registered = false">Рэгістрацыя</a></small></p>
                 </div>
                 <p class="col-xs-4">
-                    <input type="submit" ng-disabled="!loginForm.$valid" class="btn big-btn btn-orange pull-right" ng-click="logIn()" value="Уваход">
+                    <input type="submit" ng-disabled="!(loginForm.uEmail.$valid && loginForm.uPsw.$valid)" class="btn big-btn btn-orange pull-right" ng-click="logIn()" value="Уваход">
                 </p>
-
             </div>
             <div ng-show="!registered" class="form-group clearfix space-block-t">
                 <div class="col-xs-8">
