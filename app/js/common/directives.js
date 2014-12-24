@@ -38,4 +38,16 @@
         };
     });
 
+    app.directive('apytanka', [function(){
+          return {
+              restrict: 'EA',
+              require: '^ngModel',
+              //scope: {
+              //    apytanka: '='
+              //},
+              templateUrl: '../partials/apytanka.html',
+              replace: true
+          }
+    }]);
+
 })();
