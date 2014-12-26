@@ -38,7 +38,9 @@
 
 
 </section>
-<section ng-include="'apytanka.html'"></section>
+<section>
+    <apytanka ng-repeat="apytanka in apytankaList" ng-model="apytanka"></apytanka>
+</section>
 <section>
     <div class="clearfix">
         <nav class="pull-right">
