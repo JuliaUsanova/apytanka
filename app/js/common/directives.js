@@ -50,4 +50,12 @@
           }
     }]);
 
+    app.directive('apytankaComment', [function(){
+        return {
+            restrict: 'EA',
+            templateUrl: '../partials/apytanka-comment.html',
+            replace: true
+        }
+    }]);
+
 })();
