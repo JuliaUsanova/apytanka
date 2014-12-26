@@ -25,7 +25,7 @@
                 when('/user-profile/apytanki', {
                     templateUrl: './partials/profile-edit.html',
                     action: 'profile.apytanki',
-                    controller: 'apytankaCtrl'
+                    controller: 'apytankaListCtrl'
                 }).
                 when('/user-profile/settings', {
                     templateUrl: './partials/profile-edit.html',
@@ -33,7 +33,7 @@
                 }).
                 when('/apytanka/:id', {
                     templateUrl: './partials/apytanka-discussion.html',
-                    controller: ''
+                    controller: 'apytankaCtrl'
                 }).
                 otherwise({
                     redirectTo: '/'
