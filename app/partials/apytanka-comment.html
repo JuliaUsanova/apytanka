@@ -1,0 +1,29 @@
+<div class="comment-body">
+    <div class="clearfix">
+        <div class="col-xs-3 col-sm-1 logo-block">
+            <a>
+                <img ng-src="{{comment.user.avatar}}" class="img-responsive">
+                <cite class="text-muted author small">
+                    {{comment.user.name}} {{comment.user.surname}}
+                </cite>
+            </a>
+        </div>
+        <div class="col-xs-9 col-sm-10 descr-block">
+            <header class="clearfix">
+                <h4 class="col-sm-9">comment.comment.title
+                    <br><small>{comment.user.country}, {comment.user.city}, {comment.comment.date} </small></h4>
+                <h4 class="col-sm-3 text-right">
+                    <span class="glyphicon glyphicon-heart" ng-class="{orange: (comment.comment.rating - $index) > 0}"></span>
+                    <span class="glyphicon glyphicon-heart" ng-class="{orange: (comment.comment.rating - $index) > 0}"></span>
+                    <span class="glyphicon glyphicon-heart-empty" ng-class="{orange: (comment.comment.rating - $index) > 0}"></span>
+                    <span class="glyphicon glyphicon-heart-empty" ng-class="{orange: (comment.comment.rating - $index) > 0}"></span>
+                    <span class="glyphicon glyphicon-heart-empty" ng-class="{orange: (comment.comment.rating - $index) > 0}"></span>
+                </h4>
+            </header>
+            <div>
+                {comment.comment.content}
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
