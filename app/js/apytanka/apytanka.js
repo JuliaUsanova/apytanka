@@ -40,7 +40,6 @@
 
     apytanka.controller('apytankaListCtrl', ['$scope', 'Apytanka', function($scope, Apytanka){
 
-
         $scope.apytankaList = [];
 
         var apytankaList = [
@@ -59,6 +58,8 @@
         }, $scope.apytankaList);
 
     }]);
+
+
 
     apytanka.controller('apytankaCtrl', ['$scope', 'Apytanka', 'userService', function($scope, Apytanka, userService){
 
@@ -79,20 +80,36 @@
             content: '',
             title: '',
             date: new Date(),
-            rating: 0,
-            setRating: function(val){
-                rating = val+1;
-            }
+            rating: (function(){
+                var number = 0;
+
+                function rating (){
+                    return number
+                };
+
+                rating.setR = function(val){
+                    if(typeof(val) == 'number' && val <= 5) number = val;
+                    rating();
+                };
+
+                rating.isPositive = function(val){
+                    return number - val >= 0;
+                };
+
+                return rating;
+
+            })()
         };
 
-        $scope.uComment = pureComment;
+        $scope.uComment = angular.copy(pureComment);
 
         $scope.addComment = function(){
             var comment =  {user: {name: user.name, surname: user.surname, id: user.id, avatar: user.avatar, country: user.country, city: user.city},
                 id: 'new', comment: {content: $scope.uComment.content, title: $scope.uComment.title, date: $scope.uComment.date,
-                    rating: $scope.uComment.rating}};
-            $scope.apytanka.comments.push(comment);
-            $scope.uComment = pureComment;
+                    rating: $scope.uComment.rating()}};
+            $scope.apytanka.comments.unshift(comment);
+            pureComment.rating.setR(0);
+            $scope.uComment = angular.copy(pureComment);
         };
 
     }]);
