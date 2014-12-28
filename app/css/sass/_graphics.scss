@@ -79,14 +79,7 @@
   }
 
 }
-.ng-dirty.ng-invalid, .ng-touched.ng-invalid{
-  border: 1px solid red;
 
-  &:focus{
-    box-shadow: 0px 0px 3px -1px rgba(255, 0, 0, 0.8);
-    outline-color: rgba(250, 37, 37, 0);
-  }
-}
 .graph table{
   width: 500px;
 }
