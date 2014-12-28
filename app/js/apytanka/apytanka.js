@@ -107,6 +107,11 @@
             var comment =  {user: {name: user.name, surname: user.surname, id: user.id, avatar: user.avatar, country: user.country, city: user.city},
                 id: 'new', comment: {content: $scope.uComment.content, title: $scope.uComment.title, date: $scope.uComment.date,
                     rating: $scope.uComment.rating()}};
+
+//            http request should be here, with user id expept user: {}
+//            in the respond the id of new comment will come
+
+
             $scope.apytanka.comments.unshift(comment);
             pureComment.rating.setR(0);
             $scope.uComment = angular.copy(pureComment);
