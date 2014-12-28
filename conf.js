@@ -11,6 +11,6 @@ exports.config = {
 //    chromeDriver: 'C:/Users/julia/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver',
     seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: ['test/e2e/*.js'],
-    baseUrl: 'http://test.apytanka.by/app'
+//    baseUrl: 'http://test.apytanka.by/app/index.html'
 
 };
