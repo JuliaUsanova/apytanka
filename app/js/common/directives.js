@@ -38,4 +38,24 @@
         };
     });
 
+    app.directive('apytanka', [function(){
+          return {
+              restrict: 'EA',
+              require: '^ngModel',
+              //scope: {
+              //    apytanka: '='
+              //},
+              templateUrl: '../partials/apytanka.html',
+              replace: true
+          }
+    }]);
+
+    app.directive('apytankaComment', [function(){
+        return {
+            restrict: 'EA',
+            templateUrl: '../partials/apytanka-comment.html',
+            replace: true
+        }
+    }]);
+
 })();

@@ -3,11 +3,11 @@
 <div class="page-content">
 <div class="container">
 <section class="user-info-body">
-    <img src="../css/images/1644835.jpg" class="background-image">
+    <img ng-src="{{apytanka.user.avatar}}" class="background-image">
     <div class="user-info">
         <div class="space-block-t">
             <div class="user-photo img-circle center-block">
-                <img src="../css/images/1644835.jpg" class="img-responsive">
+                <img ng-src="{{apytanka.user.avatar}}" class="img-responsive">
             </div>
             <h1 class="text-center text-uppercase space-block-b"> web developer </h1>
             <div>
@@ -26,17 +26,11 @@
     </div>
 </section>
 <section>
-    <h2>Title may be too long, even longer than the pape size, but it doesn't matter
-        <br><small>Belarus, Minsk, 22.11.2014 </small>
+    <h2>{{apytanka.title}}
+        <br><small>{{apytanka.user.country}}, {{apytank.user.city}}, {{Date.parse(apytanka.date)}} </small>
     </h2>
     <article>
-        <p>Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.
-        Title may be too long,
-        even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter</p>
-
-        <p>Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than
-        the pape size, but it doesn't matter.Title may be too long, even longer than the pape size, but it doesn't matterTitle
-        may be too long, even longer than the pape size, but it doesn't matter</p>
+        {{apytanka.content}}
     </article>
 
 
@@ -45,99 +39,28 @@
     <form class="add-comment">
         <h3 class="text-uppercase">
             Ваша адзнака:
-            <span class="glyphicon glyphicon-heart-empty"></span>
-            <span class="glyphicon glyphicon-heart-empty"></span>
-            <span class="glyphicon glyphicon-heart-empty"></span>
-            <span class="glyphicon glyphicon-heart-empty"></span>
-            <span class="glyphicon glyphicon-heart-empty"></span>
+            <span class="glyphicon glyphicon-heart" ng-click="uComment.rating.setR(1)" ng-class="{orange: uComment.rating.isPositive(1) }"></span>
+            <span class="glyphicon glyphicon-heart" ng-click="uComment.rating.setR(2)" ng-class="{orange: uComment.rating.isPositive(2) }"></span>
+            <span class="glyphicon glyphicon-heart" ng-click="uComment.rating.setR(3)" ng-class="{orange: uComment.rating.isPositive(3) }"></span>
+            <span class="glyphicon glyphicon-heart" ng-click="uComment.rating.setR(4)" ng-class="{orange: uComment.rating.isPositive(4) }"></span>
+            <span class="glyphicon glyphicon-heart" ng-click="uComment.rating.setR(5)" ng-class="{orange: uComment.rating.isPositive(5) }"></span>
         </h3>
         <div class="form-group c-input">
             <label for="comment-title" class="sr-only">У агульным:</label>
-            <input id="comment-title" type="text" class="form-control" placeholder="Загаловак вашага каментара">
+            <input id="comment-title" type="text" class="form-control" placeholder="Загаловак вашага каментара" ng-model="uComment.title">
         </div>
         <div class="form-group c-input">
             <label for="comment-body" class="sr-only">Больш падрабязна:</label>
-            <textarea id="comment-body" type="text" class="form-control" placeholder="Ваш каментар"></textarea>
+            <textarea id="comment-body" type="text" class="form-control" placeholder="Ваш каментар" ng-model="uComment.content"></textarea>
         </div>
         <div class="clearfix space-block-t">
-            <button class="btn btn-default btn-sm pull-right"> Дадаць каментар</button>
+            <button class="btn btn-default btn-sm pull-right" ng-click="addComment()"> Дадаць каментар</button>
         </div>
     </form>
 </section>
 <section>
     <div class="apytanka-comment">
-        <div class="comment-body">
-            <div class="clearfix">
-                <div class="col-xs-3 col-sm-1 logo-block">
-                    <a>
-                        <img src="../css/images/563469251.png" class="img-responsive">
-                        <cite class="text-muted author small">
-                            Julia Usanova
-                        </cite>
-                    </a>
-                </div>
-                <div class="col-xs-9 col-sm-10 descr-block">
-                    <header class="clearfix">
-                        <h4 class="col-sm-9">Title may be too long, even longer than the pape size, but it doesn't matter
-                            <br><small>Belarus, Minsk, 22.11.2014 </small></h4>
-                        <h4 class="col-sm-3 text-right">
-                            <span class="glyphicon glyphicon-heart"></span>
-                            <span class="glyphicon glyphicon-heart"></span>
-                            <span class="glyphicon glyphicon-heart-empty"></span>
-                            <span class="glyphicon glyphicon-heart-empty"></span>
-                            <span class="glyphicon glyphicon-heart-empty"></span>
-                        </h4>
-                    </header>
-                    <div>
-                        <p>
-                            Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                            may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                        </p>
-                        <p>
-                            Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                            may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <hr>
-        </div>
-        <div class="comment-body">
-            <div class="clearfix">
-                <div class="col-xs-3 col-sm-1 logo-block">
-                    <a>
-                        <img src="../css/images/563469251.png" class="img-responsive">
-                        <cite class="text-muted author small">
-                            Julia Usanova
-                        </cite>
-                    </a>
-                </div>
-                <div class="col-xs-9 col-sm-10 descr-block">
-                    <header class="clearfix">
-                        <h4 class="col-sm-9">Title may be too long, even longer than the pape size, but it doesn't matter
-                            <br><small>Belarus, Minsk, 22.11.2014 </small></h4>
-                        <h4 class="col-sm-3 text-right">
-                            <span class="glyphicon glyphicon-heart orange"></span>
-                            <span class="glyphicon glyphicon-heart orange"></span>
-                            <span class="glyphicon glyphicon-heart-empty"></span>
-                            <span class="glyphicon glyphicon-heart-empty"></span>
-                            <span class="glyphicon glyphicon-heart-empty"></span>
-                        </h4>
-                    </header>
-                    <div>
-                        <p>
-                            Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                            may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                        </p>
-                        <p>
-                            Title may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter.Title
-                            may be too long, even longer than the pape size, but it doesn't matterTitle may be too long, even longer than the pape size, but it doesn't matter
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <hr>
-        </div>
+        <div apytanka-comment ng-repeat="review in apytanka.comments"></div>
     </div>
     <div class="clearfix">
         <nav class="pull-right">

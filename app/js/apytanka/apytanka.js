@@ -6,30 +6,40 @@
 
     var apytanka = angular.module('apytanka', ['user']);
 
-    apytanka.service('Apytanka', ['userService', function(userService){
+    apytanka.factory('Apytanka', ['userService', function(userService){
 
         var user = userService.getUser();
 
-        function Apytanka (data){
-            this.id = data.id;
-            this.user = data.user || {id: '', name: '', surname: '', avatar: '', country: '', city: ''};
-            this.title = data.title || '';
-            this.content = data.content || '';
-            this.date = new Date(data.date);
-            this.rating = data.rating;
-//            this.likes = data.likes || [];
-//            this.dislikes = data.dislikes || [];
+        var Apytanka = (function(data){
+            function ApytankaClass (data){
+                this.id = data.id;
+                this.user = data.user || {id: '', name: '', surname: '', avatar: '', country: '', city: ''};
+                this.title = data.title || '';
+                this.content = data.content || '';
+                this.date = new Date(data.date);
+                this.rating = data.rating || {likes: [], dislikes: []};
+                this.comments = data.comments;
+            }
+            ApytankaClass.prototype.like = function(){
+                var index = this.rating.likes.indexOf(user.id);
+                index == -1 ? this.rating.likes.push(user.id) : this.rating.likes.splice(index, 1);
+            };
+            ApytankaClass.prototype.dislike = function(){
+                var index = this.rating.dislikes.indexOf(user.id);
+                index == -1 ? this.rating.dislikes.push(user.id) : this.rating.dislikes.splice(index, 1);
+            };
 
-        }
-        Apytanka.prototype.like = function(){
-            console.log(user.id);
-        };
+            return ApytankaClass;
+
+        })();
 
         return Apytanka;
 
+
     }]);
 
-    apytanka.controller('apytankaCtrl', ['$scope', 'Apytanka', function($scope, Apytanka){
+    apytanka.controller('apytankaListCtrl', ['$scope', 'Apytanka', function($scope, Apytanka){
+
 
         $scope.apytankaList = [];
 
@@ -48,8 +58,45 @@
             this.push(new Apytanka(obj));
         }, $scope.apytankaList);
 
+    }]);
 
+    apytanka.controller('apytankaCtrl', ['$scope', 'Apytanka', 'userService', function($scope, Apytanka, userService){
+
+        var user = userService.getUser();
+
+        var apytanka = {id: '1', user: {name: 'Inna', surname: 'Ivanova', id: 123, avatar: 'css/images/1644835.jpg', country: 'Thailand',
+            city: 'Bangkok'}, title: "First", content: 'bla-bla-bl-nnnnnnnnnnnnnnn-knbvccvg ghjb c gcvbnb fhggfc dddfg ga', date: 634600801000,
+        comments: [
+            {user: {name: 'Kiloak', surname: 'Kiser', id: 123, avatar: 'css/images/563469251.png', country: 'Germany', city: 'Berlin'}, id: 1,
+                comment: {content: 'fffffff', title: 'Yjdfkdre fesadfjfds fvgnbvcxzx', rating: 3, date: '30.08.2014'}},
+            {user: {name: 'Julian', surname: 'Cesar', id: 123, avatar: 'css/images/563469251.png', country: 'Italy', city: 'Rome'}, id: 2,
+                comment: {content: 'fjsddfudisd hfduioskzxmc sodklxmcnvb sbddfskx bdszkxc fds', title: 'Ijdnfjd fhuew', date: '12.05.2014', rating: 4}}
+        ]};
+
+        $scope.apytanka = new Apytanka(apytanka);
+
+        var pureComment = {
+            content: '',
+            title: '',
+            date: new Date(),
+            rating: 0,
+            setRating: function(val){
+                rating = val+1;
+            }
+        };
+
+        $scope.uComment = pureComment;
+
+        $scope.addComment = function(){
+            var comment =  {user: {name: user.name, surname: user.surname, id: user.id, avatar: user.avatar, country: user.country, city: user.city},
+                id: 'new', comment: {content: $scope.uComment.content, title: $scope.uComment.title, date: $scope.uComment.date,
+                    rating: $scope.uComment.rating}};
+            $scope.apytanka.comments.push(comment);
+            $scope.uComment = pureComment;
+        };
 
     }]);
+
+
 
 })();

@@ -365,7 +365,7 @@ footer {
   overflow: hidden;
   vertical-align: middle;
 }
-.form-control.ng-dirty.ng-invalid, .form-control.ng-touched.ng-invalid {
+.form-control.ng-dirty.ng-invalid {
   border: 1px solid red;
 
   &:focus{
