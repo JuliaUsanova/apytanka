@@ -4,7 +4,7 @@
 
 (function(){
 
-    var userControllers = angular.module('userControllers', ['user']);
+    var userControllers = angular.module('user');
 
     userControllers.controller('loginCtrl', ['$scope', 'userService', '$element', function($scope, userService, $element){
 
@@ -51,7 +51,6 @@
                         userService.changeAvatar(e.target.result);
                     };
 
-
                 }
             };
 
@@ -61,9 +60,7 @@
 
                 // process File object
 
-
                 ParseFile(file);
-
 
             }
 
