@@ -4,7 +4,7 @@
 
 (function(){
 
-    var userMod = angular.module('user', ['customDirectives', 'userControllers']);
+    var userMod = angular.module('user');
 
     userMod.service('userService', ['$http', function($http){
 
@@ -115,6 +115,5 @@
         };
 
     }]);
-
 
 })();
