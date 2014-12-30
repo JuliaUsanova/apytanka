@@ -2,7 +2,7 @@
  * Created by юля on 17.11.2014.
  */
 (function(){
-    var app = angular.module('myApp', ['user', 'ngRoute', 'apytanka']);
+    var app = angular.module('myApp', ['user', 'ngRoute', 'apytanka', 'customDirectives', 'customFilters']);
 
     app.config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
