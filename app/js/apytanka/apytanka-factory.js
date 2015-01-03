@@ -13,7 +13,7 @@
         var Apytanka = (function(data){
             function ApytankaClass (data){
                 this.id = data.id;
-                this.user = data.user || {id: '', name: '', surname: '', avatar: '', country: '', city: ''};
+                this.user = data.user || {id: '', name: '', surname: '', avatar: '', country: {}, city: ''};
                 this.title = data.title || '';
                 this.content = data.content || '';
                 this.date = new Date(data.date);
