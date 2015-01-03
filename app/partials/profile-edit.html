@@ -28,7 +28,9 @@
                         <div ng-include="'../partials/about-current-user.html'" include-replace></div>
                     </div>
                     <div ng-switch-when="apytanki">
-                        <div ng-include="'../partials/filter.html'" include-replace></div>
+                        <filter>
+                            <apytanka ng-repeat="apytanka in filteredList" ng-model="apytanka"></apytanka>
+                        </filter>
                     </div>
                     <div ng-switch-when="settings">
                         <div ng-include="'Staronka z settingami'" include-replace></div>
