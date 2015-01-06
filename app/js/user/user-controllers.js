@@ -30,7 +30,6 @@
 
     }]);
 
-
     userControllers.controller('profileCtrl', ['$scope', 'userService', function($scope, userService){
 
         $scope.selectFile = function(){
@@ -82,6 +81,25 @@
             {value: 4, name: "Спорт"}, {value: 5, name: "Вегетарыянства"}, {value: 6, name: "Развядзенне жывел"}, {value: 7, name: "Кансалтынг"},
             {value: 8, name: "Турызм"}, {value: 9, name: "Дызайн"}];
 
+    }]);
+
+    userControllers.controller('chosenUserProfile', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
+        $http({
+         method: 'getChosenUser',
+         url: 'https:...' + $routeParams.id
+         }).success(function(data){
+            $scope.chosenUser = data;
+        });
+
+        $scope.chosenUser = {
+            id: 1, name: 'User', surname: 'Userov', email: 'user@gmail.com', avatar: 'css/images/563469251.png', gender: 'f',
+            dateOfBirth: 634600800000, country: 'Belarus', city: 'Minsk', street: 'Russianova',
+            skills: [
+                {university: 0, speciality: 1, job: 4, experience: 0},
+                {university: 3, speciality: 2, job: 0, experience: 2}
+            ],
+            interests: [{value: 0, descr: 'tra ta ta'},{value: 1, descr: 'like to listen the music'},{value: 4, descr: 'do sport every day'},{value: 5, descr: ''}]
+        };
     }]);
 
 })();
