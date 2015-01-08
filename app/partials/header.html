@@ -4,9 +4,9 @@
             <div id="logo" class="clearfix">
                 <a href="/"><p class="pull-left logo">Apytanka.by</p></a>
                 <p class="pull-right">
-                    <a class="login" id="login" ng-hide="user.name"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Войти</a>
-                    <a class="login" ng-show="user.name" href="user-profile"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.name}}
-                        <span class="user-photo img-circle"><img ng-src="{{user.avatar}}"></span>
+                    <a class="login" id="login" ng-hide="currentUser.name"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Войти</a>
+                    <a class="login" ng-show="currentUser.name" href="/profile/{{currentUser.id}}/edit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{currentUser.name}}
+                        <span class="user-photo img-circle"><img ng-src="{{currentUser.avatar}}"></span>
                     </a>
                 </p>
             </div>
