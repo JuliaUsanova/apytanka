@@ -84,12 +84,12 @@
     }]);
 
     userControllers.controller('chosenUserProfile', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
-        $http({
-         method: 'getChosenUser',
-         url: 'https:...' + $routeParams.id
-         }).success(function(data){
-            $scope.chosenUser = data;
-        });
+//        $http({
+//         method: 'getChosenUser',
+//         url: 'https:...' + $routeParams.id
+//         }).success(function(data){
+//            $scope.chosenUser = data;
+//        });
 
         $scope.chosenUser = {
             id: 1, name: 'User', surname: 'Userov', email: 'user@gmail.com', avatar: 'css/images/563469251.png', gender: 'f',
