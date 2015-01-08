@@ -15,19 +15,19 @@
                     templateUrl: './partials/profile.html',
                     controller: 'chosenUserProfile'
                 }).
-                when('/user-profile', {
-                    redirectTo: '/user-profile/about'
+                when('/profile/:id/edit', {
+                    redirectTo: '/profile/:id/edit/about'
                 }).
-                when('/user-profile/about', {
+                when('/profile/:id/edit/about', {
                     templateUrl: './partials/profile-edit.html',
                     action: 'profile.about',
                     controller: 'profileCtrl'
                 }).
-                when('/user-profile/apytanki?:params', {
+                when('/profile/:id/edit/apytanki?:params', {
                     templateUrl: './partials/profile-edit.html',
                     action: 'profile.apytanki'
                 }).
-                when('/user-profile/settings', {
+                when('/profile/:id/edit/settings', {
                     templateUrl: './partials/profile-edit.html',
                     action: 'profile.settings'
                 }).
@@ -42,6 +42,7 @@
             $locationProvider.html5Mode({
                 enabled: true
             });
+            $locationProvider.hashPrefix('');
 
         }]);
 
@@ -83,7 +84,7 @@
             login: 'partials/login-form.html'
         };
 
-        $scope.user = userService.getUser();
+        $scope.currentUser = userService.getUser();
 
     }]);
 
