@@ -2,7 +2,9 @@
  * Created by юля on 05.01.2015.
  */
 (function(){
-    var customServices = angular.module('customFilter', []);
+
+    angular.module('customFilter', []);
+    var customServices = angular.module('customFilter');
 
     customServices.factory('filterService', ['$http', function($http){
         var parseParams = function(params){
@@ -10,8 +12,6 @@
         };
         var getData = function(action, params){
 //            var data = parseParams(params);
-
-
 //                            return $http({
 //                                method: requestMethod,
 //                                url: 'https:...' + params
