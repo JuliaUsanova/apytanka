@@ -61,8 +61,6 @@
                     $scope.renderAction = renderAction;
                     $scope.renderPath = renderPath;
                     $scope.currentOn = {'about': about, 'apytanki': apytanki, 'settings': settings};
-
-                    console.log(renderPath[ 1 ]);
                 }
 
             };
