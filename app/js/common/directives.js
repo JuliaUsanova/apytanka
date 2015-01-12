@@ -69,23 +69,19 @@
 
                $scope.filterParams = {
                    byCountries: {
-                       list: [{id: 'all', name: 'Усе'}],
-                       selected: 'all'
+                       list: [{id: 'all', name: 'Усе'}]
                    },
-                   search: {selected: ''},
-                   page: {selected: 1},
+                   search: '',
+                   page:  1,
                    byDate: {
-                       options: [{value: 0, name: 'Спачатку новыя'}, {value: 1, name: 'Спачатку старыя'}, {value: 'all', name: 'Не мае сэнса'}],
-                       selected: 'all'
+                       options: [{value: 0, name: 'Спачатку новыя'}, {value: 1, name: 'Спачатку старыя'}, {value: 'all', name: 'Не мае сэнса'}]
                    },
                    byRating: {
-                       options: [{value: 0, name: 'Спачатку з вышэйшым'}, {value: 1, name: 'Спачатку з ніжэйшым'}, {value: 'all', name: 'Не мае сэнса'}],
-                       selected: 'all'
+                       options: [{value: 0, name: 'Спачатку з вышэйшым'}, {value: 1, name: 'Спачатку з ніжэйшым'}, {value: 'all', name: 'Не мае сэнса'}]
                    }
                };
 
                $scope.filterBy = {'country': 'all', 'search': '', 'page': 1, date: 'all', rating: 'all'};
-
 
                var setParams = function (obj1, obj2){
                    var keyArr = Object.keys(obj1);
