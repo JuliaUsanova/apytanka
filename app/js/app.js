@@ -25,7 +25,8 @@
                 }).
                 when('/profile/:id/edit/apytanki?:params', {
                     templateUrl: './partials/profile-edit.html',
-                    action: 'profile.apytanki'
+                    action: 'profile.apytanki',
+                    reloadOnSearch: false
                 }).
                 when('/profile/:id/edit/settings', {
                     templateUrl: './partials/profile-edit.html',
