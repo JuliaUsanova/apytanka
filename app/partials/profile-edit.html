@@ -29,7 +29,7 @@
                     </div>
                     <div ng-switch-when="apytanki" ng-controller="apytankaListCtrl">
                         <filter>
-                            <apytanka ng-repeat="apytanka in currentPage" ng-model="apytanka"></apytanka>
+                            <apytanka ng-repeat="apytanka in pagination.currentPage((pagination.pageIndex))" ng-model="apytanka"></apytanka>
                         </filter>
                     </div>
                     <div ng-switch-when="settings">
