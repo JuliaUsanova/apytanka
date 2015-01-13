@@ -4,17 +4,23 @@
 (function(){
     var apytanka = angular.module('apytanka');
 
-    apytanka.controller('apytankaListCtrl', ['$scope', '$location', 'filterService', 'pagination', function($scope, $location, filterService, pagination){
+    apytanka.controller('apytankaListCtrl', ['$scope', '$location', 'filterService', 'Pagination', function($scope, $location, filterService, Pagination){
+
+
 
         $scope.$watch($location, function(newVal, oldVal){
 //                filterService.list('apytanki', $location.search()).success(function(data){
 //                                $scope.filteredList = data;
 //                            });
             var filteredList = filterService.list('apytanki', $location.search());
-            pagination.setData(filteredList);
-            var pageNumber = $location.search()['page'] || 1;
-            $scope.currentPage = pagination.currentPage(pageNumber);
+            if ( !$scope.pagination ) {
+                $scope.pagination = new Pagination(filteredList);
+                console.log($scope.pagination);
+            }
 
+            var pageNumber = $location.search()['page'] || 1;
+
+            console.log( $scope.pagination.currentPage(pageNumber) );
         }, true);
 
 
