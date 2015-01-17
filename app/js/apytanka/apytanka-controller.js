@@ -6,60 +6,101 @@
 
     apytanka.controller('apytankaListCtrl', ['$scope', '$location', 'filterService', 'Pagination', function($scope, $location, filterService, Pagination){
 
+        var selected = {'country': 'all', 'search': '', date: 'all', rating: 'all'};
+        $scope.hideFiltersPanel = false;
 
+        $scope.pagination = new Pagination();
 
-        $scope.$watch($location, function(newVal, oldVal){
-//                filterService.list('apytanki', $location.search()).success(function(data){
-//                                $scope.filteredList = data;
-//                            });
-            var filteredList = filterService.list('apytanki', $location.search());
-            if ( !$scope.pagination ) {
-                $scope.pagination = new Pagination(filteredList);
-                console.log($scope.pagination);
+        $scope.filter = {
+            countries: {
+                list: [{id: 'all', name: 'Усе'}]
+            },
+            searchParam: '',
+            date: {
+                options: [{value: 0, name: 'Спачатку новыя'}, {value: 1, name: 'Спачатку старыя'}, {value: 'all', name: 'Не мае сэнса'}]
+            },
+            rating: {
+                options: [{value: 0, name: 'Спачатку з вышэйшым'}, {value: 1, name: 'Спачатку з ніжэйшым'}, {value: 'all', name: 'Не мае сэнса'}]
+            },
+            selected: angular.copy(selected),
+            reset: function(){
+                angular.copy(selected, $scope.filter.selected)
             }
+        };
 
-            var pageNumber = $location.search()['page'] || 1;
+        $scope.createApytanka = function(){
+            $scope.ap = {id: '?', date: new Date(), comments: [], user: {}};
+            $scope.hideFiltersPanel = true;
 
-            console.log( $scope.pagination.currentPage(pageNumber) );
-        }, true);
+            //maybe should set it to apytanka factory
+        };
+        $scope.addApytanka = function(){
+            angular.extend($scope.ap.user, $scope.currentUser);
+            $scope.pagination.allData().unshift($scope.ap);
+            $scope.hideFiltersPanel = false;
+            //$http.put for updating only?
+            //should set it to apytanka factory
+        };
 
-
-//        $scope.getData = function(){
-//            var params;
-//            var requestMethod;
-//
-//            var parseUrl = function(url){
-//                requestMethod = $location.path();
-//                params = $location.search();
-//            };
-//            return function($routeParams){
-//                parseUrl(url);
-////                            return $http({
-////                                method: requestMethod,
-////                                url: 'https:...' + params
-////                            }).success(function(data){
+//        $scope.$on('searchParamsChanged', function(event, searchObj){
+////                filterService.list('apytanki', searchObj).success(function(data){
 ////                                $scope.filteredList = data;
-////                              for ( var i = 0; i < data.length; i++ ) {
-////                              if( $scope.filters.byCountries.list.indexOf(data[i].user.country) != -1 ) return;
-////                              $scope.filters.byCountries.list.push(data[i].user.country);
-////                              };
 ////                            });
 //
-//                $scope.filteredList = [
-//                    {id: '1', user: {name: 'Ivan', surname: 'Ivanov', id: 123, avatar: 'css/images/563469251.png', country: {id: 2, name: 'Thailand'}, city: 'Bangkok'}, title: "First", content: 'bla-bla-bla',
-//                        date: 634600801000, rating: {likes: [2, 12, 125, 45, 85, 44], dislikes: [14,58,21]}},
-//                    {id: '2', user: {name: 'Julian', surname: 'Cesar', id: 123, avatar: 'css/images/563469251.png', country: {id: 1, name: 'Italy'}, city: 'Rome'}, title: "AHAHAHAH",
-//                        content: 'Fortune, which has a great deal of power in other matters but especially in war, can bring about great changes in a situation through very slight forces',
-//                        date: 634600801001, rating: {likes: [14, 12, 115, 15, 84, 42,64], dislikes: [18,88,26,53]}},
-//                    {id: '3', user: {name: 'Kiloak', surname: 'Kiser', id: 123, avatar: 'css/images/563469251.png', country: {id: 3, name: 'Germany'}, city: 'Berlin'}, title: "fsdadfg",
-//                        content: 'What we wish, we readily believe, and what we ourselves think, we imagine others think also',
-//                        date: 634600801401, rating: {likes: [1, 12, 10, 13, 8], dislikes: [18]}}
-//                ];
-//            };
+//            if ( $scope.pagination.allData() == [] ) {
+//                // делаем спец запрос, чтобы узнать кол-во элементов подходящих под параметры фильтра
+//               // на саксэсс вызываем $scope.pagination.setData(result), где автоматически рассчит-ся кол-во страниц и срабатывает цикл функций для numbersList
+//              // searchObj добавляем старт индекс
+//            }
 //
-//        };
 //
-//        $scope.getData();
+//
+//            var filteredList = filterService.list('apytanki', searchObj);
+////            $scope.pagination.allData(filteredList);
+//            $scope.pagination.setData(filteredList);
+//            event.stopPropagation();
+//        });
+
+//        $scope.$on('$routeUpdate', function(event, routeParams){
+//            var val = parseInt($location.hash());
+//            if ( $scope.pagination.pageIndex() != val ) $scope.pagination.pageIndex(val);
+//        }, true);
+
+        $scope.$on('searchParamsChanged', function(event, searchObj){
+            $scope.pagination.allData([]);
+        });
+
+        $scope.$on('$routeUpdate', function(event, routeParams){
+            var val = parseInt($location.hash());
+            if ( $scope.pagination.pageIndex() != val ) $scope.pagination.pageIndex(val);
+            if ( $scope.pagination.getData.buffer != null ) {
+                var getData = $scope.pagination.getData;
+                routeParams.params.startIndex = getData.start;
+                routeParams.params.endIndex = getData.end;
+                var filteredBuffer = filterService.list('apytanki', routeParams.params);
+                getData.buffer(filteredBuffer);
+                getData.buffer = null;
+            }
+            if ( $scope.pagination.allData().length == 0 ) {
+                var data = {};
+                data.itemsNumber = filterService.listLength('apytanki', routeParams.params);
+                $scope.pagination.setData(data);
+
+                var firstPage = $scope.pagination.numbersList()[0];
+                var lastPage = $scope.pagination.numbersList[$scope.pagination.numbersList().length-1];
+
+                routeParams.params.startIndex = $scope.pagination.itemsOnPage * (firstPage - $scope.pagination.buttonsLength);
+                routeParams.params.endIndex = $scope.pagination.itemsOnPage * (lastPage + $scope.pagination.buttonsLength);
+
+                var filteredList = filterService.list('apytanki', routeParams.params);
+
+                $scope.pagination.setBuffers(filteredList);
+            }
+        }, true);
+
+        $scope.$watch('pagination.getData', function(newVal, oldVal){
+            $location.hash($scope.pagination.pageIndex());
+        });
 
     }]);
 
