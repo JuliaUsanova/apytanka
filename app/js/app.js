@@ -11,9 +11,13 @@
                 when('/', {
                     templateUrl: './partials/main.html'
                 }).
-                when('/profile/:id', {
+                when('/profile/:id?:params', {
                     templateUrl: './partials/profile.html',
-                    controller: 'chosenUserProfile'
+                    controller: 'chosenUserProfile',
+                    reloadOnSearch: false
+                }).
+                when('/profile/:id', {
+                    redirectTo: '/profile/:id?search=""'
                 }).
                 when('/profile/:id/edit', {
                     redirectTo: '/profile/:id/edit/about'
@@ -27,6 +31,9 @@
                     templateUrl: './partials/profile-edit.html',
                     action: 'profile.apytanki',
                     reloadOnSearch: false
+                }).
+                when('/profile/:id/edit/apytanki', {
+                    redirectTo: '/profile/:id/edit/apytanki?search=""'
                 }).
                 when('/profile/:id/edit/settings', {
                     templateUrl: './partials/profile-edit.html',
