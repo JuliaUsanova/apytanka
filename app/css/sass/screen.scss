@@ -44,7 +44,7 @@
   @include button-gradient($light-orange, $orange);
   border-color: $dark-orange;
   color: rgb(254, 252, 249);
-  &:hover{
+  &:hover, &:focus{
     color: rgba(254, 252, 249, 1);
   }
 }
@@ -259,6 +259,9 @@ b.dot {
   .page-content {
     section:nth-of-type(n+2) {
       padding: 50px 70px;
+    }
+    [filter] section {
+      padding: 15px 70px;
     }
     section#first {
 
