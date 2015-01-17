@@ -65,23 +65,8 @@
        return{
            restrict: 'EA',
            templateUrl: '../partials/filter.html',
+
            controller: ['$scope', '$location', function($scope, $location){
-
-               $scope.filterParams = {
-                   byCountries: {
-                       list: [{id: 'all', name: 'Усе'}]
-                   },
-                   search: '',
-                   page:  1,
-                   byDate: {
-                       options: [{value: 0, name: 'Спачатку новыя'}, {value: 1, name: 'Спачатку старыя'}, {value: 'all', name: 'Не мае сэнса'}]
-                   },
-                   byRating: {
-                       options: [{value: 0, name: 'Спачатку з вышэйшым'}, {value: 1, name: 'Спачатку з ніжэйшым'}, {value: 'all', name: 'Не мае сэнса'}]
-                   }
-               };
-
-               $scope.filterBy = {'country': 'all', 'search': '', 'page': 1, date: 'all', rating: 'all'};
 
                var setParams = function (obj1, obj2){
                    var keyArr = Object.keys(obj1);
@@ -95,22 +80,27 @@
                    }
                };
 
-               setParams($location.search(), $scope.filterBy);
-               if ( jQuery.isEmptyObject($location.search()) ) $location.search({page: 1});
-
-               $scope.updateLocation = function (urlObj){
+               $scope.updateSearchLocation = function (urlObj){
                    var filtersObj = {};
                    setParams(urlObj, filtersObj);
-                   jQuery.isEmptyObject(filtersObj) ? $location.search({page: 1}) : $location.search(filtersObj);
+                   jQuery.isEmptyObject(filtersObj) ? $location.search({'search': ''}).hash('1') : $location.search(filtersObj).hash('1');
+                   $scope.$emit('searchParamsChanged', $location.search());
                };
+
+               $scope.updateFilterSelectedParams = function(number){
+                   setParams($location.search(), $scope.filter.selected);
+                   if ( jQuery.isEmptyObject($location.search()) ) $location.search({'search': ''}).hash('1');
+               };
+
+               $scope.updateFilterSelectedParams();
+               $scope.$emit('searchParamsChanged', $location.search());
 
            }],
            link: function($scope, iElement, iAttrs, ctrl){
 
-               $scope.$watch('filterBy', function(newVal, oldVal){
-                   if ( !angular.equals(newVal, oldVal) ) $scope.updateLocation(newVal);
+               $scope.$watch('filter.selected', function(newVal, oldVal){
+                   if ( !angular.equals(newVal, oldVal) ) $scope.updateSearchLocation(newVal);
                }, true);
-
 
            },
            transclude: true
