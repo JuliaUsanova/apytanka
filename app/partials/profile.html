@@ -25,9 +25,11 @@
                     </div>
                 </div>
             </section>
-            <filter filter-params="filterParams">
-                <apytanka ng-repeat="apytanka in pagination.currentPage((pagination.pageIndex))" ng-model="apytanka"></apytanka>
-            </filter>
+            <div ng-controller="apytankaListCtrl">
+                <div filter filter-params="filter">
+                    <div apytanka ng-repeat="apytanka in pagination.currentPage(pagination.pageIndex())" ng-model="apytanka"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
